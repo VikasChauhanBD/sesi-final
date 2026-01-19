@@ -92,6 +92,7 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 6. ✅ **Banner Image** - Professional surgery image added to hero section
 7. ✅ **EC Members Size** - Larger cards (192px width, 96px avatars) with auto-scrolling
 8. ✅ **Gallery Categories** - 12 images across 5 categories (Conference, Workshop, CME, Award Ceremony, Social Event)
+9. ✅ **Committee Member Photos** - All 16 committee members now have professional photos
 
 ---
 
