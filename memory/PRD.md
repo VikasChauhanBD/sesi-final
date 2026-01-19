@@ -13,117 +13,95 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 
 ## What's Been Implemented (Jan 19, 2026)
 
-### ✅ Public Pages (Matching sesionline.in)
+### ✅ Complete Public Website
 
 **Main Pages:**
-- **Home** - Hero section, stats (480+ members, 1000+ CME), committee preview, news, events
-- **Overview** - About SESI, mission/vision, key objectives
-- **Executive Committee** - Office bearers + EC members with year filter (2025-26)
-- **Individual Committee Member Profiles** - Slug-based URLs (e.g., /executive-committee/dr-ramankant-aggarwal)
-- **News & Highlights** - News grid with category filters
-- **Events & Conferences** - Events list with status filters (upcoming/ongoing/completed)
+- ✅ **Home** - Hero, stats, committee preview, news, events, programs
+- ✅ **Overview** - About SESI, mission/vision, key objectives
+- ✅ **About Us** - History, mission, values, what we do
+- ✅ **Membership** - Membership types (Life/Associate), eligibility, benefits
+- ✅ **Contact** - Contact form with email/subject, contact info cards
+
+**Executive Committee:**
+- ✅ Committee list with year filter (2025-26, 2024-25, etc.)
+- ✅ Individual member profile pages with slug URLs
+- ✅ 16 actual SESI committee members seeded
 
 **Programs:**
-- Education Initiatives
-- Research Support  
-- Community Outreach
+- ✅ Education Initiatives
+- ✅ Research Support
+- ✅ Community Outreach
 
 **Education:**
-- Courses & CME
-- Workshops & Skill Labs
-- Fellowship
-- Training Resources
+- ✅ Courses & CME
+- ✅ Workshops & Skill Labs
+- ✅ Fellowship
+- ✅ Training Resources
 
-**Publications:** (placeholder)
-- JSESI
-- Manuscript Submission
-- SESI Newsletters
+**Publications:**
+- ✅ JSESI (Journal)
+- ✅ Manuscript Submission Guidelines
+- ✅ SESI Newsletters
 
-**Resources:** (placeholder)
-- Guidelines
-- Downloads
-- Learning Links
+**Resources:**
+- ✅ Clinical Guidelines
+- ✅ Downloads Center
+- ✅ Learning Links
 
-**Other:**
-- Membership landing page
-- Registration form (fully functional with file uploads)
-- About Us
-- Contact
+**News & Events:**
+- ✅ News & Highlights with category filters
+- ✅ Events & Conferences with status filters
+- ✅ Gallery page (fetches from admin uploads)
 
-### ✅ Admin Panel (Full CRUD)
-- Dashboard with statistics
-- Applications management (approve/reject membership)
-- Members management (view approved members)
-- Committee management (CRUD with year filtering)
-- Events management (CRUD with status)
-- News management (CRUD with publish/draft)
-- Gallery management (image upload)
+**Membership Registration:**
+- ✅ Multi-step registration form
+- ✅ State-District dependent dropdowns
+- ✅ File upload for certificates
+- ✅ Form validation
+
+### ✅ Complete Admin Panel
+
+- ✅ Dashboard with statistics
+- ✅ Applications management (approve/reject)
+- ✅ Members management (view approved members with certificates)
+- ✅ Committee management (CRUD with year filtering)
+- ✅ Events management (CRUD with status)
+- ✅ News management (CRUD with publish/draft)
+- ✅ Gallery management (image upload)
 
 ### ✅ Automated Workflows
 - Membership number generation (SESI-YYYY-NNNN)
 - PDF certificate generation on approval
 - Auto-creation of member profile on approval
+- Contact form submission storage
 
 ### 🔶 Mocked Features
 - **Email Notifications:** Printed to console, not actually sent
 
 ---
 
-## Database Seeded Data
-- **Committee Members:** 16 actual SESI committee members
-  - Dr. Ramankant Aggarwal (President)
-  - Dr. Ayyapan Nair (Secretary)
-  - Dr. Vinay Pandey (Finance Secretary)
-  - + 13 EC Members
-- **News Articles:** 4 sample articles
-- **Events:** 3 upcoming events
-- **Members:** 5 approved members with certificates
-
----
-
 ## Navigation Structure
 
 ```
-Home | Overview | Programs ▼ | Education ▼ | Publications ▼ | Resources ▼ | News & Highlights | Membership
+SESI Logo | Home | Overview | Programs ▼ | Education ▼ | Publications ▼ | Resources ▼ | News & Highlights | Membership
 
-Programs:
-  - Education Initiatives
-  - Research Support
-  - Community Outreach
-
-Education:
-  - Courses & CME
-  - Workshops & Skill Labs
-  - Fellowship
-  - Training Resources
-
-Publications:
-  - JSESI
-  - Manuscript Submission
-  - SESI Newsletters
-
-Resources:
-  - Guidelines
-  - Downloads
-  - Learning Links
+Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 ```
 
 ---
 
-## Design Theme
-- **Primary Colors:** Orange (#ea580c) to Red (#dc2626) gradients
-- **Style:** Clean, professional, academic
-- **Header:** Orange top bar with white main navigation
-- **Buttons:** Orange/red with white text, rounded-full style
+## Database Seeded Data
+- **Committee Members:** 16 (actual SESI committee)
+- **News Articles:** 4
+- **Events:** 3 upcoming
+- **Members:** 5 approved with certificates
+- **States/Districts:** All Indian states
 
 ---
 
 ## Test Status
-- **Iteration 1:** Admin panel - 24/24 tests passed (100%)
-- **Iteration 2:** Public pages - 17/18 tests passed (94%)
-  - Fixed: /api/public/members response model bug
-
----
+- **Iteration 1:** Admin panel - 24/24 passed (100%)
+- **Iteration 2:** Public pages - 17/18 passed (94%)
 
 ## Test Credentials
 - **Admin URL:** `/admin`
@@ -133,12 +111,6 @@ Resources:
 ---
 
 ## Pending Tasks
-
-### P1 - Upcoming
-1. **Complete Publications Pages** - JSESI journal, manuscript submission form
-2. **Complete Resources Pages** - Guidelines PDFs, downloads center
-3. **Public Gallery Page** - Photo gallery with categories
-4. **Contact Form** - Working contact form with email
 
 ### P2 - Future
 1. **SEO Implementation**
@@ -157,15 +129,20 @@ Resources:
 
 ## Key Files
 
-### Frontend
-- `/app/frontend/src/pages/Home.js` - Main landing page
-- `/app/frontend/src/pages/ExecutiveCommittee.js` - Committee list + profiles
-- `/app/frontend/src/pages/NewsHighlights.js` - News page
-- `/app/frontend/src/pages/EventsPage.js` - Events page
-- `/app/frontend/src/components/layout/Header.js` - Navigation
-- `/app/frontend/src/components/layout/Footer.js` - Footer
+### Frontend Pages
+- `/app/frontend/src/pages/Home.js`
+- `/app/frontend/src/pages/ExecutiveCommittee.js`
+- `/app/frontend/src/pages/NewsHighlights.js`
+- `/app/frontend/src/pages/EventsPage.js`
+- `/app/frontend/src/pages/Publications.js`
+- `/app/frontend/src/pages/Resources.js`
+- `/app/frontend/src/pages/Gallery.js`
+- `/app/frontend/src/pages/Contact.js`
+- `/app/frontend/src/pages/Membership.js`
+- `/app/frontend/src/pages/About.js`
+- `/app/frontend/src/pages/Registration.js`
 
 ### Backend
 - `/app/backend/routers/public.py` - Public API endpoints
 - `/app/backend/routers/admin.py` - Admin API endpoints
-- `/app/backend/models/models.py` - Pydantic models
+- `/app/backend/routers/membership.py` - Membership API
