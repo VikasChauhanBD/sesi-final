@@ -51,6 +51,10 @@ export const publicAPI = {
   
   // Contact Form
   submitContactForm: (data) => api.post('/public/contact', data),
+  
+  // Gallery Albums
+  getAlbums: (params) => api.get('/public/gallery/albums', { params }),
+  getAlbum: (albumId) => api.get(`/public/gallery/albums/${albumId}`),
 };
 
 // Membership APIs
