@@ -84,6 +84,32 @@ async def get_gallery_images(category: Optional[str] = None, limit: int = 50):
     images = await db.gallery.find(query, {"_id": 0}).sort("upload_date", -1).limit(limit).to_list(limit)
     return images
 
+# Gallery Albums
+@router.get("/gallery/albums")
+async def get_public_albums(category: Optional[str] = None):
+    """Get published gallery albums"""
+    query = {"is_published": True}
+    if category:
+        query["category"] = category
+    
+    albums = await db.gallery_albums.find(query, {"_id": 0}).sort("created_at", -1).to_list(100)
+    # Add photo count
+    for album in albums:
+        album['photo_count'] = await db.gallery.count_documents({"album_id": album['id']})
+    return albums
+
+@router.get("/gallery/albums/{album_id}")
+async def get_album_with_photos(album_id: str):
+    """Get a specific album with all its photos"""
+    album = await db.gallery_albums.find_one({"id": album_id, "is_published": True}, {"_id": 0})
+    if not album:
+        raise HTTPException(status_code=404, detail="Album not found")
+    
+    photos = await db.gallery.find({"album_id": album_id}, {"_id": 0}).sort("display_order", 1).to_list(1000)
+    album['photos'] = photos
+    album['photo_count'] = len(photos)
+    return album
+
 # Publications
 @router.get("/publications", response_model=List[Publication])
 async def get_publications(publication_type: Optional[str] = None, limit: int = 20):
