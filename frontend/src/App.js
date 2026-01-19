@@ -55,6 +55,7 @@ function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/applications" element={<Applications />} />
           <Route path="/admin/applications/:id" element={<ApplicationDetail />} />
+          <Route path="/admin/members" element={<Members />} />
         </Routes>
       </BrowserRouter>
     </div>
