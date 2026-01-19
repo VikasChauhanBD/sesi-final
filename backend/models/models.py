@@ -41,6 +41,10 @@ class Member(BaseModel):
     joined_date: datetime = Field(default_factory=datetime.utcnow)
     status: str = "active"  # active, inactive
     profile_image: Optional[str] = None
+    certificate_path: Optional[str] = None
+    application_id: Optional[str] = None
+    years_experience: Optional[int] = None
+    medical_council_reg_no: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class MemberCreate(BaseModel):
