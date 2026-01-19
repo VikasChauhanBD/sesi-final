@@ -133,7 +133,7 @@ const ManageCommittee = () => {
       is_current: member.is_current,
       profile_image: member.profile_image || null
     });
-    setPreviewImage(member.profile_image ? `${BACKEND_URL}${member.profile_image}` : null);
+    setPreviewImage(member.profile_image ? `${BACKEND_URL}/api${member.profile_image}` : null);
     setShowForm(true);
   };
 
