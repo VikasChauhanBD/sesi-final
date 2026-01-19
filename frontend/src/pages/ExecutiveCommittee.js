@@ -184,7 +184,7 @@ export const CommitteeMemberProfile = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-600 border-t-transparent"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-amber-700 border-t-transparent"></div>
       </div>
     );
   }
@@ -194,7 +194,7 @@ export const CommitteeMemberProfile = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Member Not Found</h1>
-          <Link to="/executive-committee" className="text-orange-600 hover:text-orange-700">
+          <Link to="/executive-committee" className="text-amber-700 hover:text-amber-800">
             ← Back to Executive Committee
           </Link>
         </div>
@@ -205,7 +205,7 @@ export const CommitteeMemberProfile = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
+      <section className="bg-gradient-to-br from-amber-700 via-amber-800 to-red-900 text-white py-16">
         <div className="container mx-auto px-4">
           <Link to="/executive-committee" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -214,9 +214,9 @@ export const CommitteeMemberProfile = () => {
             Back to Executive Committee
           </Link>
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="w-40 h-40 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-40 h-40 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
               {member.profile_image ? (
-                <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover rounded-full" />
+                <img src={getImageUrl(member.profile_image)} alt={member.full_name} className="w-full h-full object-cover rounded-full" />
               ) : (
                 <span className="text-white text-5xl font-bold">
                   {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
@@ -225,7 +225,7 @@ export const CommitteeMemberProfile = () => {
             </div>
             <div>
               <h1 className="text-3xl lg:text-4xl font-bold mb-2" data-testid="member-name">{member.full_name}</h1>
-              <p className="text-xl text-orange-200 font-semibold" data-testid="member-designation">
+              <p className="text-xl text-amber-200 font-semibold" data-testid="member-designation">
                 {member.designation}, Shoulder and Elbow Society of India
               </p>
               {member.qualifications && (
