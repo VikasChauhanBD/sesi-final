@@ -41,7 +41,7 @@ export const ExecutiveCommittee = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
+      <section className="bg-gradient-to-br from-amber-700 via-amber-800 to-red-900 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4" data-testid="committee-title">Executive Committee</h1>
           <p className="text-white/90 max-w-2xl">
@@ -60,7 +60,7 @@ export const ExecutiveCommittee = () => {
                 onClick={() => setSelectedYear(year)}
                 className={`px-6 py-2 rounded-full font-medium transition whitespace-nowrap ${
                   selectedYear === year
-                    ? 'bg-orange-600 text-white'
+                    ? 'bg-amber-700 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 data-testid={`year-filter-${year}`}
@@ -75,7 +75,7 @@ export const ExecutiveCommittee = () => {
       <div className="container mx-auto px-4 py-12">
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-600 border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-amber-700 border-t-transparent"></div>
           </div>
         ) : (
           <>
@@ -91,11 +91,11 @@ export const ExecutiveCommittee = () => {
                       className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group"
                       data-testid={`member-card-${member.slug}`}
                     >
-                      <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
+                      <div className="aspect-square bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
                         {member.profile_image ? (
-                          <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
+                          <img src={getImageUrl(member.profile_image)} alt={member.full_name} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-28 h-28 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                          <div className="w-28 h-28 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg">
                             <span className="text-white text-4xl font-bold">
                               {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
                             </span>
@@ -103,8 +103,8 @@ export const ExecutiveCommittee = () => {
                         )}
                       </div>
                       <div className="p-6 text-center">
-                        <h3 className="font-bold text-lg text-gray-900 group-hover:text-orange-600 transition">{member.full_name}</h3>
-                        <p className="text-orange-600 font-semibold mt-1">{member.designation}</p>
+                        <h3 className="font-bold text-lg text-gray-900 group-hover:text-amber-700 transition">{member.full_name}</h3>
+                        <p className="text-amber-700 font-semibold mt-1">{member.designation}</p>
                         {member.qualifications && (
                           <p className="text-sm text-gray-500 mt-2">{member.qualifications}</p>
                         )}
@@ -129,9 +129,9 @@ export const ExecutiveCommittee = () => {
                     >
                       <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                         {member.profile_image ? (
-                          <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
+                          <img src={getImageUrl(member.profile_image)} alt={member.full_name} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                          <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center">
                             <span className="text-white text-2xl font-bold">
                               {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
                             </span>
@@ -139,7 +139,7 @@ export const ExecutiveCommittee = () => {
                         )}
                       </div>
                       <div className="p-4 text-center">
-                        <h3 className="font-semibold text-gray-900 group-hover:text-orange-600 transition text-sm">{member.full_name}</h3>
+                        <h3 className="font-semibold text-gray-900 group-hover:text-amber-700 transition text-sm">{member.full_name}</h3>
                         <p className="text-xs text-gray-500 mt-1">{member.designation}</p>
                       </div>
                     </Link>
