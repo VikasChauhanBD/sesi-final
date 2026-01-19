@@ -220,11 +220,47 @@ class TestPublicPublicationsAPI:
 
 
 class TestPublicMembersAPI:
-    """Tests for /api/public/members endpoint"""
+    """Tests for /api/public/members endpoint - Members Directory"""
     
     def test_get_members(self):
         """Test GET /api/public/members returns members directory"""
         response = requests.get(f"{BASE_URL}/api/public/members")
+        assert response.status_code == 200
+        
+        data = response.json()
+        assert isinstance(data, list)
+        
+    def test_members_have_required_fields(self):
+        """Test members have all required fields for directory display"""
+        response = requests.get(f"{BASE_URL}/api/public/members")
+        assert response.status_code == 200
+        
+        data = response.json()
+        if len(data) > 0:
+            member = data[0]
+            # Check required fields for member directory
+            assert "id" in member
+            assert "full_name" in member
+            assert "membership_number" in member
+            assert "membership_type" in member
+            assert "certificate_path" in member
+            
+    def test_members_have_certificate_path(self):
+        """Test that members with certificates have valid certificate_path"""
+        response = requests.get(f"{BASE_URL}/api/public/members")
+        assert response.status_code == 200
+        
+        data = response.json()
+        members_with_cert = [m for m in data if m.get("certificate_path")]
+        
+        if len(members_with_cert) > 0:
+            cert_path = members_with_cert[0]["certificate_path"]
+            assert cert_path.startswith("/uploads/certificates/")
+            assert cert_path.endswith(".pdf")
+            
+    def test_members_search(self):
+        """Test members search functionality"""
+        response = requests.get(f"{BASE_URL}/api/public/members", params={"search": "Dr"})
         assert response.status_code == 200
         
         data = response.json()
