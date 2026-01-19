@@ -164,3 +164,34 @@ async def get_statistics():
         "cme_credits": "1,000+",
         "endorsed_legislation": 39
     }
+
+
+
+# Contact Form
+@router.post("/contact")
+async def submit_contact_form(data: dict):
+    """Submit contact form"""
+    from datetime import datetime
+    import uuid
+    
+    contact = {
+        "id": str(uuid.uuid4()),
+        "name": data.get("name"),
+        "email": data.get("email"),
+        "phone": data.get("phone", ""),
+        "subject": data.get("subject"),
+        "message": data.get("message"),
+        "status": "new",
+        "created_at": datetime.utcnow().isoformat()
+    }
+    
+    await db.contact_submissions.insert_one(contact)
+    
+    # Log the contact (mock email)
+    print(f"\n📧 NEW CONTACT FORM SUBMISSION")
+    print(f"From: {contact['name']} <{contact['email']}>")
+    print(f"Subject: {contact['subject']}")
+    print(f"Message: {contact['message'][:100]}...")
+    print("=" * 50)
+    
+    return {"success": True, "message": "Contact form submitted successfully"}
