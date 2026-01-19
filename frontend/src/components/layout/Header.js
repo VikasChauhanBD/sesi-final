@@ -10,8 +10,14 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', path: '/' },
-    { name: 'Overview', path: '/overview' },
-    { name: 'Executive Committee', path: '/executive-committee' },
+    { 
+      name: 'Overview', 
+      path: '/overview',
+      dropdown: [
+        { name: 'About SESI', path: '/overview' },
+        { name: 'Executive Committee', path: '/executive-committee' },
+      ]
+    },
     { 
       name: 'Programs', 
       path: '/programs',
@@ -47,11 +53,11 @@ const Header = () => {
         { name: 'Guidelines', path: '/resources/guidelines' },
         { name: 'Downloads', path: '/resources/downloads' },
         { name: 'Learning Links', path: '/resources/links' },
+        { name: 'Photo Gallery', path: '/gallery' },
       ]
     },
     { name: 'News & Highlights', path: '/news' },
     { name: 'Events', path: '/events' },
-    { name: 'Gallery', path: '/gallery' },
     { 
       name: 'Membership', 
       path: '/membership',
