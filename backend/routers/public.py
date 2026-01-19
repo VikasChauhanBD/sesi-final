@@ -97,15 +97,15 @@ async def get_publications(publication_type: Optional[str] = None, limit: int = 
 
 # Members Directory
 @router.get("/members")
-async def get_members(state: Optional[str] = None, city: Optional[str] = None):
-    """Get members directory (public view - limited info)"""
+async def get_members(state: Optional[str] = None, city: Optional[str] = None, search: Optional[str] = None):
+    """Get members directory (public view)"""
     query = {"status": "active"}
     if state:
         query["state"] = state
     if city:
         query["city"] = city
     
-    # Return limited public information
+    # Return public information including membership details
     members = await db.members.find(
         query,
         {
@@ -116,9 +116,26 @@ async def get_members(state: Optional[str] = None, city: Optional[str] = None):
             "specialization": 1,
             "city": 1,
             "state": 1,
-            "hospital": 1
+            "hospital": 1,
+            "membership_number": 1,
+            "membership_type": 1,
+            "joined_date": 1,
+            "certificate_path": 1,
+            "years_experience": 1
         }
     ).sort("full_name", 1).to_list(1000)
+    
+    # Filter by search term if provided
+    if search:
+        search_lower = search.lower()
+        members = [m for m in members if 
+            search_lower in m.get('full_name', '').lower() or
+            search_lower in m.get('city', '').lower() or
+            search_lower in m.get('state', '').lower() or
+            search_lower in m.get('hospital', '').lower() or
+            search_lower in m.get('membership_number', '').lower()
+        ]
+    
     return members
 
 # States and Districts

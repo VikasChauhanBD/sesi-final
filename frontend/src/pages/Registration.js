@@ -11,7 +11,7 @@ const Registration = () => {
 
   const [formData, setFormData] = useState({
     region_membership: 'National',
-    membership_type: 'Associate Member',
+    membership_type: 'Life Member',
     title: 'Dr.',
     first_name: '',
     middle_name: '',
@@ -112,7 +112,7 @@ const Registration = () => {
       
       setFormData({
         region_membership: 'National',
-        membership_type: 'Associate Member',
+        membership_type: 'Life Member',
         title: 'Dr.',
         first_name: '',
         middle_name: '',
@@ -215,25 +215,15 @@ const Registration = () => {
                     <input
                       type="radio"
                       name="membership_type"
-                      value="Associate Member"
-                      checked={formData.membership_type === 'Associate Member'}
-                      onChange={handleChange}
-                      className="w-4 h-4 text-teal-600"
-                    />
-                    <span>Associate Member</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="membership_type"
                       value="Life Member"
                       checked={formData.membership_type === 'Life Member'}
                       onChange={handleChange}
-                      className="w-4 h-4 text-teal-600"
+                      className="w-4 h-4 text-amber-600"
                     />
                     <span>Life Member</span>
                   </label>
                 </div>
+                <p className="text-xs text-gray-500 mt-1">All memberships are Life Memberships</p>
               </div>
             </div>
 
