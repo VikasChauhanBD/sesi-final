@@ -65,24 +65,32 @@ class CommitteeMember(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     full_name: str
     designation: str  # President, Secretary, Treasurer, EC Member
-    email: Optional[EmailStr] = None
+    email: Optional[str] = None
     mobile: Optional[str] = None
     bio: Optional[str] = None
     profile_image: Optional[str] = None
     year: int  # Committee year
     display_order: int = 0
     is_current: bool = True
+    slug: Optional[str] = None
+    qualifications: Optional[str] = None
+    hospital: Optional[str] = None
+    city: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class CommitteeMemberCreate(BaseModel):
     full_name: str
     designation: str
-    email: Optional[EmailStr] = None
+    email: Optional[str] = None
     mobile: Optional[str] = None
     bio: Optional[str] = None
     year: int
     display_order: int = 0
     is_current: bool = True
+    slug: Optional[str] = None
+    qualifications: Optional[str] = None
+    hospital: Optional[str] = None
+    city: Optional[str] = None
 
 # Event Models
 class Event(BaseModel):
