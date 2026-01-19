@@ -318,9 +318,14 @@ async def update_application_status(
     admin_notes: Optional[str] = None,
     current_user: dict = Depends(get_current_user)
 ):
-    """Update application status"""
+    """Update application status and generate certificate if approved"""
     if status not in ["submitted", "under_review", "approved", "rejected"]:
         raise HTTPException(status_code=400, detail="Invalid status")
+    
+    # Get the application first
+    application = await db.membership_applications.find_one({"id": application_id})
+    if not application:
+        raise HTTPException(status_code=404, detail="Application not found")
     
     update_data = {
         "status": status,
@@ -331,15 +336,71 @@ async def update_application_status(
     if admin_notes:
         update_data["admin_notes"] = admin_notes
     
-    result = await db.membership_applications.update_one(
-        {"id": application_id},
-        {"$set": update_data}
-    )
-    
-    if result.matched_count == 0:
-        raise HTTPException(status_code=404, detail="Application not found")
-    
-    return {"success": True, "message": f"Application status updated to {status}"}
+    # If approved, generate membership number and certificate
+    if status == "approved" and application.get("status") != "approved":
+        # Generate unique membership number
+        membership_number = await get_next_membership_number()
+        update_data["membership_number"] = membership_number
+        update_data["approved_date"] = datetime.utcnow().isoformat()
+        
+        # Update application with membership number first
+        await db.membership_applications.update_one(
+            {"id": application_id},
+            {"$set": update_data}
+        )
+        
+        # Get updated application
+        updated_app = await db.membership_applications.find_one({"id": application_id}, {"_id": 0})
+        
+        # Generate certificate
+        certificate_data = {
+            "full_name": updated_app.get("full_name"),
+            "qualification": updated_app.get("qualification"),
+            "work_hospital": updated_app.get("work_hospital"),
+            "membership_type": updated_app.get("membership_type"),
+            "membership_number": membership_number,
+            "approved_date": datetime.fromisoformat(update_data["approved_date"]).strftime('%B %d, %Y')
+        }
+        
+        certificate_buffer = generate_membership_certificate(certificate_data)
+        
+        # Save certificate to file system
+        cert_folder = Path("/app/backend/uploads/certificates")
+        cert_folder.mkdir(exist_ok=True, parents=True)
+        cert_filename = f"SESI_Certificate_{membership_number}.pdf"
+        cert_path = cert_folder / cert_filename
+        
+        with open(cert_path, "wb") as f:
+            f.write(certificate_buffer.getvalue())
+        
+        # Update application with certificate path
+        certificate_url = f"/uploads/certificates/{cert_filename}"
+        await db.membership_applications.update_one(
+            {"id": application_id},
+            {"$set": {"certificate_path": certificate_url}}
+        )
+        
+        # Send approval email with certificate
+        certificate_buffer.seek(0)
+        send_approval_email_with_certificate(updated_app, certificate_buffer, certificate_url)
+        
+        return {
+            "success": True,
+            "message": f"Application approved! Membership number {membership_number} generated.",
+            "membership_number": membership_number,
+            "certificate_path": certificate_url
+        }
+    else:
+        # For other status updates
+        result = await db.membership_applications.update_one(
+            {"id": application_id},
+            {"$set": update_data}
+        )
+        
+        if result.matched_count == 0:
+            raise HTTPException(status_code=404, detail="Application not found")
+        
+        return {"success": True, "message": f"Application status updated to {status}"}
 
 # ==================== SEO MANAGEMENT ====================
 @router.get("/seo")
