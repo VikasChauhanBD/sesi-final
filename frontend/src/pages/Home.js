@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
 
 const Home = () => {
-  const [stats, setStats] = useState(null);
   const [committee, setCommittee] = useState([]);
-  const [events, setEvents] = useState([]);
   const [news, setNews] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [stats, setStats] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [statsRes, committeeRes, eventsRes, newsRes] = await Promise.all([
-          publicAPI.getStatistics(),
+        const [committeeRes, newsRes, eventsRes, statsRes] = await Promise.all([
           publicAPI.getCommittee({ is_current: true }),
-          publicAPI.getEvents({ limit: 3, status: 'upcoming' }),
-          publicAPI.getNews({ limit: 3 }),
+          publicAPI.getNews({ limit: 4 }),
+          publicAPI.getEvents({ status: 'upcoming', limit: 3 }),
+          publicAPI.getStatistics()
         ]);
-        setStats(statsRes.data);
-        setCommittee(committeeRes.data);
-        setEvents(eventsRes.data);
+        setCommittee(committeeRes.data.slice(0, 8));
         setNews(newsRes.data);
+        setEvents(eventsRes.data);
+        setStats(statsRes.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -31,49 +31,36 @@ const Home = () => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-teal-600 border-t-transparent"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="relative bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-600 text-white py-24"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-cyan-900/80"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
-              Shoulder and Elbow<br />Society of India
+      <section className="relative bg-gradient-to-br from-orange-600 via-red-600 to-red-700 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-300 rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative container mx-auto px-4 py-20 lg:py-32">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
+              Shoulder & Elbow<br />Society of India
             </h1>
-            <p className="text-xl md:text-2xl mb-4 text-teal-50">
-              A central hub for mission updates, events, and news.
-            </p>
-            <p className="text-lg text-teal-100 mb-8">
-              Overview, upcoming events, news, and quick links.
+            <p className="text-lg lg:text-xl text-white/90 mb-8 max-w-2xl">
+              A national professional organization dedicated to the advancement of education, 
+              research, and clinical excellence in shoulder and elbow surgery.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/registration"
-                className="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 shadow-xl"
-                data-testid="join-now-btn"
+                className="bg-white text-orange-600 hover:bg-orange-50 px-8 py-3 rounded-full font-bold text-lg transition shadow-lg"
+                data-testid="hero-join-btn"
               >
-                Join SESI Today
+                Join SESI
               </Link>
               <Link
-                to="/about"
-                className="bg-white/10 hover:bg-white/20 backdrop-blur px-8 py-4 rounded-lg font-semibold text-lg transition border-2 border-white/30"
+                to="/overview"
+                className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold text-lg transition"
+                data-testid="hero-learn-btn"
               >
                 Learn More
               </Link>
@@ -82,173 +69,247 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="bg-white py-16 transform -mt-12 relative z-20">
+      {/* Stats Section */}
+      <section className="bg-white py-12 -mt-8 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-8 rounded-2xl text-center shadow-lg border border-teal-100" data-testid="stat-members">
-              <div className="text-5xl font-bold text-teal-600 mb-2">480+</div>
-              <div className="text-gray-700 font-medium">Active members</div>
+          <div className="bg-white rounded-2xl shadow-2xl p-8 grid grid-cols-2 lg:grid-cols-4 gap-8" data-testid="stats-section">
+            <div className="text-center">
+              <p className="text-4xl lg:text-5xl font-bold text-orange-600">480+</p>
+              <p className="text-gray-600 mt-2">Active Members</p>
             </div>
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-2xl text-center shadow-lg border border-orange-100" data-testid="stat-cme">
-              <div className="text-5xl font-bold text-orange-600 mb-2">1,000+</div>
-              <div className="text-gray-700 font-medium">CME credits offered annually</div>
+            <div className="text-center">
+              <p className="text-4xl lg:text-5xl font-bold text-orange-600">1,000+</p>
+              <p className="text-gray-600 mt-2">CME Credits Offered</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl text-center shadow-lg border border-purple-100" data-testid="stat-legislation">
-              <div className="text-5xl font-bold text-purple-600 mb-2">39</div>
-              <div className="text-gray-700 font-medium">Endorsed pieces of current legislation</div>
+            <div className="text-center">
+              <p className="text-4xl lg:text-5xl font-bold text-orange-600">{events.length || 3}+</p>
+              <p className="text-gray-600 mt-2">Upcoming Events</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl lg:text-5xl font-bold text-orange-600">39</p>
+              <p className="text-gray-600 mt-2">Years of Excellence</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Discover Section */}
+      {/* Mission Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Discover</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              We are committed to supporting healthcare professionals, enhancing medical standards, and promoting community well-being through education, research, and collaboration.
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              SESI serves as a common platform for orthopedic surgeons across India who share a focused 
+              interest in the upper limb. We are committed to supporting healthcare professionals, 
+              enhancing medical standards, and promoting community well-being through education, research, 
+              and collaboration to improve the standards of care for patients suffering from shoulder and 
+              elbow disorders.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Committee Members */}
+      {/* Executive Committee Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Committee Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {committee.slice(0, 8).map((member) => (
-              <div key={member.id} className="text-center group" data-testid="committee-member">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center overflow-hidden shadow-lg group-hover:shadow-xl transition">
-                  {member.profile_image ? (
-                    <img src={member.profile_image} alt={member.full_name} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-4xl font-bold text-teal-600">
-                      {member.full_name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-bold text-gray-900">{member.full_name}</h3>
-                <p className="text-sm text-teal-600 font-medium">{member.designation}</p>
-              </div>
-            ))}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Executive Committee</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Meet the dedicated leaders guiding SESI's mission to advance shoulder and elbow surgery in India.
+            </p>
           </div>
+
+          {loading ? (
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-600 border-t-transparent"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6" data-testid="committee-grid">
+              {committee.map((member) => (
+                <Link
+                  key={member.id}
+                  to={`/executive-committee/${member.slug}`}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition group"
+                  data-testid={`committee-member-${member.slug}`}
+                >
+                  <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
+                    {member.profile_image ? (
+                      <img src={member.profile_image} alt={member.full_name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
+                        <span className="text-white text-3xl font-bold">
+                          {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-bold text-gray-900 group-hover:text-orange-600 transition">{member.full_name}</h3>
+                    <p className="text-sm text-orange-600 font-medium">{member.designation}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+
           <div className="text-center mt-8">
-            <Link to="/committee" className="text-teal-600 hover:text-teal-700 font-medium">
-              View All Committee Members →
+            <Link
+              to="/executive-committee"
+              className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold"
+              data-testid="view-all-committee-btn"
+            >
+              View All Committee Members
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Spotlight Events */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-teal-50">
+      {/* News & Events Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900">Spotlight</h2>
-            <Link to="/events" className="text-teal-600 hover:text-teal-700 font-medium" data-testid="see-more-events">
-              See More →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
-              <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition" data-testid="event-card">
-                <div className="h-48 bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center">
-                  {event.banner_image ? (
-                    <img src={event.banner_image} alt={event.title} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-white text-6xl">📅</span>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-teal-600">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>{new Date(event.start_date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  </div>
-                </div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Latest News */}
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Latest News</h2>
+                <Link to="/news" className="text-orange-600 hover:text-orange-700 font-medium">
+                  View All →
+                </Link>
               </div>
-            ))}
+              <div className="space-y-4" data-testid="news-list">
+                {news.length === 0 ? (
+                  <p className="text-gray-500">No news available</p>
+                ) : (
+                  news.map((item) => (
+                    <div key={item.id} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                      <span className="text-xs font-medium text-orange-600 bg-orange-100 px-3 py-1 rounded-full">
+                        {item.category || 'News'}
+                      </span>
+                      <h3 className="font-bold text-gray-900 mt-3 mb-2">{item.title}</h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">{item.excerpt || item.content.substring(0, 120)}...</p>
+                      <p className="text-xs text-gray-400 mt-3">
+                        {new Date(item.published_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Upcoming Events */}
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">Upcoming Events</h2>
+                <Link to="/events" className="text-orange-600 hover:text-orange-700 font-medium">
+                  View All →
+                </Link>
+              </div>
+              <div className="space-y-4" data-testid="events-list">
+                {events.length === 0 ? (
+                  <p className="text-gray-500">No upcoming events</p>
+                ) : (
+                  events.map((event) => (
+                    <div key={event.id} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                      <div className="flex gap-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex flex-col items-center justify-center text-white flex-shrink-0">
+                          <span className="text-2xl font-bold">{new Date(event.start_date).getDate()}</span>
+                          <span className="text-xs">{new Date(event.start_date).toLocaleDateString('en-IN', { month: 'short' })}</span>
+                        </div>
+                        <div>
+                          <span className="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded">
+                            {event.event_type}
+                          </span>
+                          <h3 className="font-bold text-gray-900 mt-2">{event.title}</h3>
+                          {event.city && (
+                            <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              </svg>
+                              {event.venue ? `${event.venue}, ${event.city}` : event.city}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* Programs Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900">Latest News</h2>
-            <Link to="/news" className="text-teal-600 hover:text-teal-700 font-medium" data-testid="read-more-news">
-              Read More →
-            </Link>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Programs</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              SESI runs a series of academic and clinical programmes to improve the standards of upper limb care across the country.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {news.map((item) => (
-              <div key={item.id} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition" data-testid="news-card">
-                <div className="h-48 bg-gray-100 flex items-center justify-center">
-                  {item.image ? (
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-gray-400 text-5xl">📰</span>
-                  )}
+
+          <div className="grid md:grid-cols-3 gap-8" data-testid="programs-section">
+            <Link to="/programs/education-initiatives" className="group">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-white h-full hover:shadow-xl transition">
+                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
                 </div>
-                <div className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">
-                    {new Date(item.published_date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm line-clamp-3">{item.excerpt || item.content.substring(0, 150)}</p>
-                </div>
+                <h3 className="text-xl font-bold mb-3">Education Initiatives</h3>
+                <p className="text-white/80 text-sm">Hands-on workshops, CMEs, webinars, and resident teaching programmes.</p>
               </div>
-            ))}
+            </Link>
+
+            <Link to="/programs/research-support" className="group">
+              <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-8 text-white h-full hover:shadow-xl transition">
+                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Research Support</h3>
+                <p className="text-white/80 text-sm">Clinical research projects, registry development, and research grants.</p>
+              </div>
+            </Link>
+
+            <Link to="/programs/community-outreach" className="group">
+              <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-8 text-white h-full hover:shadow-xl transition">
+                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Community Outreach</h3>
+                <p className="text-white/80 text-sm">Free screening camps, patient awareness campaigns, and rehab education.</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Stay Connected */}
-      <section className="py-16 bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Stay Connected</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Quarterly SESI Publication</h3>
-              <Link to="/publications" className="text-teal-100 hover:text-white transition">
-                Read Latest Issue →
-              </Link>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Subscribe to SESI's e-Newsletter</h3>
-              <Link to="/contact" className="text-teal-100 hover:text-white transition">
-                Subscribe →
-              </Link>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Don't Wait! Get Involved Today</h3>
-              <Link to="/registration" className="text-teal-100 hover:text-white transition">
-                Take Action →
-              </Link>
-            </div>
-          </div>
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Join SESI?</h2>
+          <p className="text-white/90 max-w-2xl mx-auto mb-8">
+            Become a member of India's premier society for shoulder and elbow surgery. 
+            Access exclusive educational resources, networking opportunities, and professional development.
+          </p>
+          <Link
+            to="/registration"
+            className="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 px-8 py-4 rounded-full font-bold text-lg transition shadow-lg"
+            data-testid="cta-join-btn"
+          >
+            Apply for Membership
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </section>
     </div>
