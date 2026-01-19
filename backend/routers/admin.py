@@ -380,15 +380,42 @@ async def update_application_status(
             {"$set": {"certificate_path": certificate_url}}
         )
         
+        # Create member profile automatically
+        member_id = str(uuid.uuid4())
+        member_data = {
+            "id": member_id,
+            "full_name": updated_app.get("full_name"),
+            "email": updated_app.get("email"),
+            "mobile": updated_app.get("mobile"),
+            "qualification": updated_app.get("qualification"),
+            "specialization": updated_app.get("specialised_practice"),
+            "hospital": updated_app.get("work_hospital"),
+            "city": updated_app.get("work_district_name"),
+            "state": updated_app.get("work_state_name"),
+            "membership_type": updated_app.get("membership_type"),
+            "membership_number": membership_number,
+            "joined_date": datetime.utcnow().isoformat(),
+            "status": "active",
+            "certificate_path": certificate_url,
+            "application_id": application_id,
+            "years_experience": updated_app.get("years_experience"),
+            "medical_council_reg_no": updated_app.get("medical_council_reg_no"),
+            "created_at": datetime.utcnow().isoformat()
+        }
+        
+        # Insert member into members collection
+        await db.members.insert_one(member_data)
+        
         # Send approval email with certificate
         certificate_buffer.seek(0)
         send_approval_email_with_certificate(updated_app, certificate_buffer, certificate_url)
         
         return {
             "success": True,
-            "message": f"Application approved! Membership number {membership_number} generated.",
+            "message": f"Application approved! Membership number {membership_number} generated. Member profile created.",
             "membership_number": membership_number,
-            "certificate_path": certificate_url
+            "certificate_path": certificate_url,
+            "member_id": member_id
         }
     else:
         # For other status updates
