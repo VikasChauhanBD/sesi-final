@@ -52,6 +52,7 @@ const Login = () => {
               required
               placeholder="admin@sesi.co.in"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              data-testid="login-email-input"
             />
           </div>
 
@@ -63,6 +64,7 @@ const Login = () => {
               onChange={(e) => setCredentials({...credentials, password: e.target.value})}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              data-testid="login-password-input"
             />
           </div>
 
@@ -70,6 +72,7 @@ const Login = () => {
             type="submit"
             disabled={loading}
             className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white py-3 rounded-lg font-bold transition transform hover:scale-105 disabled:opacity-50"
+            data-testid="login-submit-btn"
           >
             {loading ? 'Logging in...' : 'Login'}
           </button>
