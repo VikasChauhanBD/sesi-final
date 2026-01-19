@@ -88,7 +88,7 @@ const Gallery = () => {
                 onClick={() => setSelectedImage(image)}
               >
                 <img
-                  src={`${BACKEND_URL}${image.image_url}`}
+                  src={`${BACKEND_URL}/api${image.image_url}`}
                   alt={image.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                 />
