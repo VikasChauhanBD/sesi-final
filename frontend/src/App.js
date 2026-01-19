@@ -21,6 +21,10 @@ import AdminDashboard from "./admin/Dashboard";
 import Applications from "./admin/Applications";
 import ApplicationDetail from "./admin/ApplicationDetail";
 import Members from "./admin/Members";
+import ManageCommittee from "./admin/ManageCommittee";
+import ManageEvents from "./admin/ManageEvents";
+import ManageNews from "./admin/ManageNews";
+import ManageGallery from "./admin/ManageGallery";
 
 function App() {
   return (
@@ -56,6 +60,10 @@ function App() {
           <Route path="/admin/applications" element={<Applications />} />
           <Route path="/admin/applications/:id" element={<ApplicationDetail />} />
           <Route path="/admin/members" element={<Members />} />
+          <Route path="/admin/committee" element={<ManageCommittee />} />
+          <Route path="/admin/events" element={<ManageEvents />} />
+          <Route path="/admin/news" element={<ManageNews />} />
+          <Route path="/admin/gallery" element={<ManageGallery />} />
         </Routes>
       </BrowserRouter>
     </div>
