@@ -15,22 +15,27 @@ const Home = () => {
   const [committee, setCommittee] = useState([]);
   const [news, setNews] = useState([]);
   const [events, setEvents] = useState([]);
+  const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const scrollRef = useRef(null);
+  const eventScrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [eventsPaused, setEventsPaused] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [committeeRes, newsRes, eventsRes] = await Promise.all([
+        const [committeeRes, newsRes, eventsRes, albumsRes] = await Promise.all([
           publicAPI.getCommittee({ is_current: true }),
           publicAPI.getNews({ limit: 4 }),
-          publicAPI.getEvents({ status: 'upcoming', limit: 3 }),
+          publicAPI.getEvents({ status: 'upcoming', limit: 6 }),
+          publicAPI.getAlbums(),
         ]);
         setCommittee(committeeRes.data);
         setNews(newsRes.data);
         setEvents(eventsRes.data);
+        setAlbums(albumsRes.data?.slice(0, 4) || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
