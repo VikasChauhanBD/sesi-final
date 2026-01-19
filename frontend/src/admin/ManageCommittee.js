@@ -94,7 +94,7 @@ const ManageCommittee = () => {
         imageFormData.append('category', 'Committee');
         
         const uploadRes = await adminAPI.uploadImage(imageFormData);
-        submitData.profile_image = uploadRes.data.file_path;
+        submitData.profile_image = uploadRes.data.image_url;
       }
       
       delete submitData.profile_image_file;
