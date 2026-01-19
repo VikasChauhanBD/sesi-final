@@ -344,6 +344,48 @@ const ApplicationDetail = () => {
                 Save Notes
               </button>
             </div>
+
+            {/* Membership Certificate - Show if approved */}
+            {application.status === 'approved' && application.membership_number && (
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-500 rounded-xl shadow-lg p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-green-900">Membership Approved</h2>
+                    <p className="text-sm text-green-700">Certificate Generated</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="bg-white rounded-lg p-4">
+                    <p className="text-sm text-gray-600 mb-1">Membership Number</p>
+                    <p className="text-2xl font-bold text-green-600">{application.membership_number}</p>
+                  </div>
+                  
+                  {application.certificate_path && (
+                    <a
+                      href={`${BACKEND_URL}${application.certificate_path}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Download Certificate
+                    </a>
+                  )}
+                  
+                  <p className="text-xs text-green-700 text-center">
+                    ✓ Certificate sent to member via email
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
