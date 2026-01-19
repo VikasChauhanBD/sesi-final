@@ -99,6 +99,11 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
     - Positions (Current and former hospital affiliations)
     - Achievements (Awards, Pioneering procedures, Publications)
     - Professional Memberships
+11. ✅ **Event-Based Gallery System** - Albums for organizing multiple photos per event:
+    - Admin can create event albums with title, date, location, category, description
+    - Bulk photo upload (select multiple files at once)
+    - Public gallery shows albums with cover images, photo counts, category filters
+    - Click album to view all photos with lightbox navigation
 
 ---
 
