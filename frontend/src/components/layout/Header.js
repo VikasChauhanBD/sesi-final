@@ -3,86 +3,154 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
   const navigation = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
+    { name: 'Overview', path: '/overview' },
+    { 
+      name: 'Programs', 
+      path: '/programs',
+      dropdown: [
+        { name: 'Education Initiatives', path: '/programs/education-initiatives' },
+        { name: 'Research Support', path: '/programs/research-support' },
+        { name: 'Community Outreach', path: '/programs/community-outreach' },
+      ]
+    },
+    { 
+      name: 'Education', 
+      path: '/education',
+      dropdown: [
+        { name: 'Courses & CME', path: '/education/courses-cme' },
+        { name: 'Workshops & Skill Labs', path: '/education/workshops' },
+        { name: 'Fellowship', path: '/education/fellowship' },
+        { name: 'Training Resources', path: '/education/training-resources' },
+      ]
+    },
+    { 
+      name: 'Publications', 
+      path: '/publications',
+      dropdown: [
+        { name: 'JSESI', path: '/publications/jsesi' },
+        { name: 'Manuscript Submission', path: '/publications/manuscript-submission' },
+        { name: 'SESI Newsletters', path: '/publications/newsletters' },
+      ]
+    },
+    { 
+      name: 'Resources', 
+      path: '/resources',
+      dropdown: [
+        { name: 'Guidelines', path: '/resources/guidelines' },
+        { name: 'Downloads', path: '/resources/downloads' },
+        { name: 'Learning Links', path: '/resources/links' },
+      ]
+    },
+    { name: 'News & Highlights', path: '/news' },
     { name: 'Membership', path: '/membership' },
-    { name: 'Programmes', path: '/programmes' },
-    { name: 'Education', path: '/education' },
-    { name: 'Events', path: '/events' },
-    { name: 'Publications / Journal', path: '/publications' },
-    { name: 'Resources', path: '/resources' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-2">
-        <div className="container mx-auto px-4 flex justify-end items-center gap-6 text-sm">
-          <Link to="/about" className="hover:text-teal-100 transition">About</Link>
-          <Link to="/contact" className="hover:text-teal-100 transition">Contact</Link>
-          <Link
-            to="/registration"
-            className="bg-orange-500 hover:bg-orange-600 px-4 py-1 rounded-full font-medium transition"
-          >
-            Join
-          </Link>
-          <Link
-            to="/admin"
-            className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-1 rounded-full font-medium transition"
-          >
-            Log In / Renew
-          </Link>
+      {/* Top Bar - Orange Theme */}
+      <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-2">
+        <div className="container mx-auto px-4 flex justify-between items-center text-sm">
+          <div className="flex items-center gap-4">
+            <a href="mailto:info@sesi.co.in" className="flex items-center gap-1 hover:text-orange-100 transition">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              info@sesi.co.in
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/about" className="hover:text-orange-100 transition">About Us</Link>
+            <Link to="/contact" className="hover:text-orange-100 transition">Contact</Link>
+            <Link
+              to="/registration"
+              className="bg-white text-orange-600 hover:bg-orange-100 px-4 py-1 rounded-full font-semibold transition"
+              data-testid="join-btn"
+            >
+              Join SESI
+            </Link>
+            <Link
+              to="/admin"
+              className="border border-white hover:bg-white/10 px-4 py-1 rounded-full font-medium transition"
+              data-testid="login-btn"
+            >
+              Login
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <header className="bg-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-3">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-2xl">SESI</span>
+            <Link to="/" className="flex items-center gap-3" data-testid="logo-link">
+              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-xl">SESI</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Shoulder and Elbow</h1>
-                <p className="text-sm text-gray-600">Society of India</p>
+                <h1 className="text-lg font-bold text-gray-900 leading-tight">Shoulder & Elbow</h1>
+                <p className="text-sm text-orange-600 font-medium">Society of India</p>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center">
               {navigation.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                    isActive(item.path)
-                      ? 'bg-teal-50 text-teal-700'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                <div 
+                  key={item.path} 
+                  className="relative"
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.path)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  {item.name}
-                </Link>
+                  <Link
+                    to={item.path}
+                    className={`px-4 py-2 text-sm font-medium transition flex items-center gap-1 ${
+                      isActive(item.path)
+                        ? 'text-orange-600'
+                        : 'text-gray-700 hover:text-orange-600'
+                    }`}
+                    data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {item.name}
+                    {item.dropdown && (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </Link>
+                  
+                  {/* Dropdown Menu */}
+                  {item.dropdown && activeDropdown === item.path && (
+                    <div className="absolute top-full left-0 w-56 bg-white shadow-xl rounded-lg py-2 border border-gray-100 z-50">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          to={subItem.path}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition"
+                          data-testid={`subnav-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
-              <button className="ml-4 text-gray-600 hover:text-teal-600 transition">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-gray-700"
+              className="lg:hidden text-gray-700 p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-testid="mobile-menu-btn"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
@@ -96,20 +164,35 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="lg:hidden pb-4">
+            <nav className="lg:hidden pb-4 border-t border-gray-100 pt-4">
               {navigation.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition ${
-                    isActive(item.path)
-                      ? 'bg-teal-50 text-teal-700'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                <div key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`block px-4 py-3 text-sm font-medium transition ${
+                      isActive(item.path)
+                        ? 'text-orange-600 bg-orange-50'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                    onClick={() => !item.dropdown && setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                  {item.dropdown && (
+                    <div className="pl-6 bg-gray-50">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          to={subItem.path}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:text-orange-600"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
           )}
