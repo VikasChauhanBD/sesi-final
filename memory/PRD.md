@@ -104,6 +104,13 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
     - Bulk photo upload (select multiple files at once)
     - Public gallery shows albums with cover images, photo counts, category filters
     - Click album to view all photos with lightbox navigation
+12. ✅ **Updated Navigation Structure**:
+    - Overview dropdown: About SESI, Executive Committee
+    - Resources dropdown: Guidelines, Downloads, Learning Links, Photo Gallery
+    - Events as direct menu link
+13. ✅ **Homepage Enhancements**:
+    - Scrolling "UPCOMING EVENTS" ticker banner below hero
+    - Photo Gallery preview section with 4 album cards
 
 ---
 
