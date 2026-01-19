@@ -38,6 +38,32 @@ const Home = () => {
   );
   const ecMembers = committee.filter(m => m.designation === 'EC Member');
 
+  // Auto-scroll effect for EC Members
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer || ecMembers.length === 0 || isPaused) return;
+
+    const scrollSpeed = 1; // pixels per frame
+    let animationId;
+
+    const scroll = () => {
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += scrollSpeed;
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    animationId = requestAnimationFrame(scroll);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [ecMembers.length, isPaused]);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
