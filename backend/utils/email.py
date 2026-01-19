@@ -80,3 +80,82 @@ def send_membership_application_email(application_data: dict):
     """
     
     send_email(admin_email, admin_subject, admin_body)
+
+def send_approval_email_with_certificate(application_data: dict, certificate_buffer, certificate_path: str):
+    """Send approval email with membership certificate"""
+    applicant_email = application_data.get('email')
+    full_name = application_data.get('full_name')
+    membership_number = application_data.get('membership_number')
+    membership_type = application_data.get('membership_type')
+    
+    # Email to approved member
+    subject = "🎉 Congratulations! SESI Membership Approved"
+    body = f"""
+    Dear {full_name},
+    
+    Congratulations! We are pleased to inform you that your application for membership with the 
+    Shoulder & Elbow Society of India (SESI) has been APPROVED.
+    
+    ✅ Membership Details:
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Membership Number: {membership_number}
+    Membership Type: {membership_type}
+    Status: Active
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    📜 Your digital membership certificate is attached to this email.
+    
+    🎯 Member Benefits:
+    • Access to exclusive SESI conferences and workshops
+    • CME credits and continuing education opportunities
+    • Networking with leading shoulder & elbow surgeons
+    • Access to latest research and publications
+    • Discounted registration for SESI events
+    • Member directory listing
+    
+    🌐 Next Steps:
+    1. Download and save your membership certificate
+    2. Visit our website: https://sesi.co.in
+    3. Stay updated on upcoming events and conferences
+    4. Connect with fellow members
+    
+    Welcome to the SESI family! We look forward to your active participation 
+    and contribution to advancing shoulder and elbow surgery in India.
+    
+    For any queries, please contact us at info@sesi.co.in
+    
+    Best regards,
+    SESI Admin Team
+    Shoulder & Elbow Society of India
+    Website: https://sesi.co.in
+    """
+    
+    send_email(
+        applicant_email, 
+        subject, 
+        body,
+        attachment=certificate_buffer,
+        attachment_name=f"SESI_Certificate_{membership_number}.pdf"
+    )
+    
+    # Email to admin
+    admin_email = "admin@sesi.co.in"
+    admin_subject = f"Membership Approved - {full_name}"
+    admin_body = f"""
+    Membership application has been approved:
+    
+    Member Name: {full_name}
+    Membership Number: {membership_number}
+    Email: {applicant_email}
+    Membership Type: {membership_type}
+    
+    Certificate generated and sent to member.
+    Certificate path: {certificate_path}
+    
+    The member can now access all SESI benefits and services.
+    
+    Best regards,
+    SESI System
+    """
+    
+    send_email(admin_email, admin_subject, admin_body)
