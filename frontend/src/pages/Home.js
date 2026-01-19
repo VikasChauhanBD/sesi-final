@@ -2,6 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
 
+// Helper function to get the correct image URL
+const getImageUrl = (imageUrl, backendUrl) => {
+  if (!imageUrl) return null;
+  // If it's already an external URL (http/https), return as-is
+  if (imageUrl.startsWith('http')) return imageUrl;
+  // Otherwise, it's a local path - prefix with backend URL
+  return `${backendUrl}/api${imageUrl}`;
+};
+
 const Home = () => {
   const [committee, setCommittee] = useState([]);
   const [news, setNews] = useState([]);
