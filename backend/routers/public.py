@@ -10,7 +10,7 @@ from models.models import (
 router = APIRouter(prefix="/public", tags=["Public"])
 
 # Database connection
-mongo_url = os.environ['MONGO_URL']
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ.get('DB_NAME', 'sesi_database')]
 
