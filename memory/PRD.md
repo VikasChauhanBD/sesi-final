@@ -85,10 +85,13 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 ## P0 Issues Fixed (Jan 19, 2026)
 
 1. ✅ **Member Profile Expansion & PDF Download** - Created MembersDirectory.js with expandable profiles and working certificate downloads
-2. ✅ **Homepage Committee Layout** - President at top, office bearers below, EC members in horizontal scrolling row
-3. ✅ **Remove "Associate Member"** - Only "Life Member" option available in registration
+2. ✅ **Homepage Committee Layout** - President at top, office bearers below, EC members in horizontal scrolling row (auto-scrolling)
+3. ✅ **Remove "Associate Member"** - Only "Life Member" option available in registration, historical records updated
 4. ✅ **Color Scheme** - Toned down from bright orange to professional amber-700/amber-800
 5. ✅ **Committee Photo Upload** - Admin panel supports profile photo uploads for committee members
+6. ✅ **Banner Image** - Professional surgery image added to hero section
+7. ✅ **EC Members Size** - Larger cards (192px width, 96px avatars) with auto-scrolling
+8. ✅ **Gallery Categories** - 12 images across 5 categories (Conference, Workshop, CME, Award Ceremony, Social Event)
 
 ---
 
