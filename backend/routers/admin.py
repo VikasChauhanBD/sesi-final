@@ -15,6 +15,9 @@ from models.models import (
 )
 from routers.auth import get_current_user
 from utils.file_upload import save_upload_file, delete_file
+from utils.certificate import generate_membership_certificate, get_next_membership_number
+from utils.email import send_approval_email_with_certificate
+from pathlib import Path
 
 router = APIRouter(prefix="/admin", tags=["Admin"], dependencies=[Depends(get_current_user)])
 
