@@ -81,19 +81,25 @@ const Gallery = () => {
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-testid="gallery-grid">
-            {filteredImages.map((image) => (
-              <div
-                key={image.id}
-                className="aspect-square bg-gray-100 rounded-xl overflow-hidden cursor-pointer group"
-                onClick={() => setSelectedImage(image)}
-              >
-                <img
-                  src={`${BACKEND_URL}/api${image.image_url}`}
-                  alt={image.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                />
-              </div>
-            ))}
+            {filteredImages.map((image) => {
+              // Check if image URL is external (starts with http) or local
+              const imageUrl = image.image_url?.startsWith('http') 
+                ? image.image_url 
+                : `${BACKEND_URL}/api${image.image_url}`;
+              return (
+                <div
+                  key={image.id}
+                  className="aspect-square bg-gray-100 rounded-xl overflow-hidden cursor-pointer group"
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <img
+                    src={imageUrl}
+                    alt={image.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                  />
+                </div>
+              );
+            })}
           </div>
         )}
 
