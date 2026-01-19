@@ -222,6 +222,169 @@ async def delete_news(news_id: str):
         raise HTTPException(status_code=404, detail="News not found")
     return {"success": True, "message": "News deleted"}
 
+# ==================== GALLERY ALBUM MANAGEMENT ====================
+@router.get("/gallery/albums")
+async def get_all_albums():
+    """Get all gallery albums"""
+    albums = await db.gallery_albums.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    # Add photo count to each album
+    for album in albums:
+        album['photo_count'] = await db.gallery.count_documents({"album_id": album['id']})
+    return albums
+
+@router.post("/gallery/albums")
+async def create_album(album: GalleryAlbumCreate):
+    """Create a new gallery album"""
+    album_obj = GalleryAlbum(
+        title=album.title,
+        description=album.description,
+        event_date=album.event_date,
+        location=album.location,
+        category=album.category
+    )
+    doc = album_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.gallery_albums.insert_one(doc)
+    return album_obj
+
+@router.put("/gallery/albums/{album_id}")
+async def update_album(album_id: str, album: GalleryAlbumCreate):
+    """Update an album"""
+    update_data = album.model_dump(exclude_unset=True)
+    result = await db.gallery_albums.update_one(
+        {"id": album_id},
+        {"$set": update_data}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Album not found")
+    return {"success": True, "message": "Album updated"}
+
+@router.delete("/gallery/albums/{album_id}")
+async def delete_album(album_id: str):
+    """Delete an album and all its photos"""
+    album = await db.gallery_albums.find_one({"id": album_id})
+    if not album:
+        raise HTTPException(status_code=404, detail="Album not found")
+    
+    # Delete all photos in the album
+    photos = await db.gallery.find({"album_id": album_id}).to_list(1000)
+    for photo in photos:
+        if photo.get('image_url') and not photo['image_url'].startswith('http'):
+            delete_file(photo['image_url'])
+    await db.gallery.delete_many({"album_id": album_id})
+    
+    # Delete album cover if exists
+    if album.get('cover_image') and not album['cover_image'].startswith('http'):
+        delete_file(album['cover_image'])
+    
+    # Delete album
+    await db.gallery_albums.delete_one({"id": album_id})
+    return {"success": True, "message": "Album and all photos deleted"}
+
+@router.get("/gallery/albums/{album_id}/photos")
+async def get_album_photos(album_id: str):
+    """Get all photos in an album"""
+    photos = await db.gallery.find({"album_id": album_id}, {"_id": 0}).sort("display_order", 1).to_list(1000)
+    return photos
+
+@router.post("/gallery/albums/{album_id}/photos")
+async def upload_album_photo(
+    album_id: str,
+    title: str = Form(""),
+    description: Optional[str] = Form(None),
+    image: UploadFile = File(...)
+):
+    """Upload a photo to an album"""
+    # Verify album exists
+    album = await db.gallery_albums.find_one({"id": album_id})
+    if not album:
+        raise HTTPException(status_code=404, detail="Album not found")
+    
+    # Save image file
+    image_path = await save_upload_file(image, "gallery")
+    
+    # Get current photo count for display order
+    photo_count = await db.gallery.count_documents({"album_id": album_id})
+    
+    # Create gallery entry
+    gallery_obj = GalleryImage(
+        title=title or album['title'],
+        description=description,
+        image_url=image_path,
+        category=album.get('category'),
+        album_id=album_id,
+        display_order=photo_count
+    )
+    doc = gallery_obj.model_dump()
+    doc['upload_date'] = doc['upload_date'].isoformat()
+    await db.gallery.insert_one(doc)
+    
+    # Update album cover if it's the first photo
+    if photo_count == 0:
+        await db.gallery_albums.update_one(
+            {"id": album_id},
+            {"$set": {"cover_image": image_path}}
+        )
+    
+    # Update photo count
+    await db.gallery_albums.update_one(
+        {"id": album_id},
+        {"$set": {"photo_count": photo_count + 1}}
+    )
+    
+    return gallery_obj
+
+@router.post("/gallery/albums/{album_id}/photos/bulk")
+async def upload_album_photos_bulk(
+    album_id: str,
+    images: List[UploadFile] = File(...)
+):
+    """Upload multiple photos to an album"""
+    # Verify album exists
+    album = await db.gallery_albums.find_one({"id": album_id})
+    if not album:
+        raise HTTPException(status_code=404, detail="Album not found")
+    
+    # Get current photo count for display order
+    photo_count = await db.gallery.count_documents({"album_id": album_id})
+    uploaded = []
+    first_image_path = None
+    
+    for idx, image in enumerate(images):
+        # Save image file
+        image_path = await save_upload_file(image, "gallery")
+        if idx == 0 and photo_count == 0:
+            first_image_path = image_path
+        
+        # Create gallery entry
+        gallery_obj = GalleryImage(
+            title=album['title'],
+            description=None,
+            image_url=image_path,
+            category=album.get('category'),
+            album_id=album_id,
+            display_order=photo_count + idx
+        )
+        doc = gallery_obj.model_dump()
+        doc['upload_date'] = doc['upload_date'].isoformat()
+        await db.gallery.insert_one(doc)
+        uploaded.append(gallery_obj)
+    
+    # Update album cover if this was the first batch
+    if first_image_path:
+        await db.gallery_albums.update_one(
+            {"id": album_id},
+            {"$set": {"cover_image": first_image_path}}
+        )
+    
+    # Update photo count
+    await db.gallery_albums.update_one(
+        {"id": album_id},
+        {"$set": {"photo_count": photo_count + len(images)}}
+    )
+    
+    return {"success": True, "uploaded_count": len(uploaded)}
+
 # ==================== GALLERY MANAGEMENT ====================
 @router.get("/gallery", response_model=List[GalleryImage])
 async def get_all_gallery():
