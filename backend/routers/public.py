@@ -25,6 +25,14 @@ async def get_committee_members(year: Optional[int] = None, is_current: bool = T
     members = await db.committee_members.find(query, {"_id": 0}).sort("display_order", 1).to_list(100)
     return members
 
+@router.get("/committee/{slug}")
+async def get_committee_member_by_slug(slug: str):
+    """Get committee member by slug"""
+    member = await db.committee_members.find_one({"slug": slug}, {"_id": 0})
+    if not member:
+        raise HTTPException(status_code=404, detail="Committee member not found")
+    return member
+
 # Events
 @router.get("/events", response_model=List[Event])
 async def get_events(status: Optional[str] = None, event_type: Optional[str] = None, limit: int = 10):
