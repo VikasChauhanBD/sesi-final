@@ -96,7 +96,7 @@ async def get_publications(publication_type: Optional[str] = None, limit: int = 
     return publications
 
 # Members Directory
-@router.get("/members", response_model=List[Member])
+@router.get("/members")
 async def get_members(state: Optional[str] = None, city: Optional[str] = None):
     """Get members directory (public view - limited info)"""
     query = {"status": "active"}
