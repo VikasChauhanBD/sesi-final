@@ -56,10 +56,10 @@ api_router.include_router(admin.router)
 # Include the router in the main app
 app.include_router(api_router)
 
-# Serve uploaded files
+# Serve uploaded files - mounted under /api/uploads for proper ingress routing
 uploads_dir = Path("/app/backend/uploads")
 uploads_dir.mkdir(exist_ok=True)
-app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
+app.mount("/api/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
 
 app.add_middleware(
     CORSMiddleware,
