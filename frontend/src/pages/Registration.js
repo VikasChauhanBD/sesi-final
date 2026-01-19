@@ -190,7 +190,7 @@ const Registration = () => {
                       value="National"
                       checked={formData.region_membership === 'National'}
                       onChange={handleChange}
-                      className="w-4 h-4 text-teal-600"
+                      className="w-4 h-4 text-amber-600"
                     />
                     <span>National</span>
                   </label>
@@ -201,7 +201,7 @@ const Registration = () => {
                       value="International"
                       checked={formData.region_membership === 'International'}
                       onChange={handleChange}
-                      className="w-4 h-4 text-teal-600"
+                      className="w-4 h-4 text-amber-600"
                     />
                     <span>International</span>
                   </label>
@@ -229,7 +229,7 @@ const Registration = () => {
 
             {/* Personal Details */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-teal-500">Personal Details</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-amber-600">Personal Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Title *</label>
@@ -238,7 +238,7 @@ const Registration = () => {
                     value={formData.title}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   >
                     <option value="Mr.">Mr.</option>
                     <option value="Mrs.">Mrs.</option>
@@ -257,7 +257,7 @@ const Registration = () => {
                     value={formData.first_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -268,7 +268,7 @@ const Registration = () => {
                     name="middle_name"
                     value={formData.middle_name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -280,7 +280,7 @@ const Registration = () => {
                     value={formData.last_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -294,7 +294,7 @@ const Registration = () => {
                     pattern="[0-9]{10}"
                     required
                     placeholder="10 digit mobile number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -306,7 +306,7 @@ const Registration = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -317,7 +317,7 @@ const Registration = () => {
                     value={formData.gender}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -333,7 +333,7 @@ const Registration = () => {
                     value={formData.medical_council_reg_no}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -341,7 +341,7 @@ const Registration = () => {
 
             {/* Professional Details */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-teal-500">Professional Details</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-amber-600">Professional Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Qualification *</label>
@@ -352,7 +352,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     placeholder="e.g., MBBS, MS Ortho"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -365,7 +365,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     min="0"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -377,7 +377,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   ></textarea>
                 </div>
 
@@ -389,7 +389,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   ></textarea>
                 </div>
 
@@ -401,7 +401,7 @@ const Registration = () => {
                     value={formData.proposal_name_1}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -413,7 +413,7 @@ const Registration = () => {
                     value={formData.proposal_name_2}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -421,7 +421,7 @@ const Registration = () => {
 
             {/* Communication Address */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-teal-500">Communication Address</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-amber-600">Communication Address</h2>
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Address *</label>
@@ -431,7 +431,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   ></textarea>
                 </div>
 
@@ -443,7 +443,7 @@ const Registration = () => {
                       value={formData.comm_state_id}
                       onChange={(e) => handleStateChange('comm_state_id', e.target.value)}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     >
                       <option value="">Select State</option>
                       {states.map(state => (
@@ -479,7 +479,7 @@ const Registration = () => {
                       pattern="[0-9]{6}"
                       required
                       placeholder="6 digits"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -488,7 +488,7 @@ const Registration = () => {
 
             {/* Work Place Address */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-teal-500">Work Place Address</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-amber-600">Work Place Address</h2>
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Hospital/Clinic Name</label>
@@ -497,7 +497,7 @@ const Registration = () => {
                     name="work_hospital"
                     value={formData.work_hospital}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -509,7 +509,7 @@ const Registration = () => {
                     onChange={handleChange}
                     required
                     rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   ></textarea>
                 </div>
 
@@ -521,7 +521,7 @@ const Registration = () => {
                       value={formData.work_state_id}
                       onChange={(e) => handleStateChange('work_state_id', e.target.value)}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     >
                       <option value="">Select State</option>
                       {states.map(state => (
@@ -557,7 +557,7 @@ const Registration = () => {
                       pattern="[0-9]{6}"
                       required
                       placeholder="6 digits"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -566,7 +566,7 @@ const Registration = () => {
 
             {/* Documents Upload */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-teal-500">Documents Upload</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-amber-600">Documents Upload</h2>
               <p className="text-sm text-gray-600 mb-6">* Required documents | Allowed formats: PDF, JPG, PNG | Max size: 5MB</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -577,7 +577,7 @@ const Registration = () => {
                     name="aadhar"
                     onChange={handleFileChange}
                     accept=".pdf,.jpg,.jpeg,.png"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -589,7 +589,7 @@ const Registration = () => {
                     onChange={handleFileChange}
                     accept=".pdf,.jpg,.jpeg,.png"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -601,7 +601,7 @@ const Registration = () => {
                     onChange={handleFileChange}
                     accept=".pdf,.jpg,.jpeg,.png"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -612,7 +612,7 @@ const Registration = () => {
                     name="specialisation_certificate"
                     onChange={handleFileChange}
                     accept=".pdf,.jpg,.jpeg,.png"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -624,7 +624,7 @@ const Registration = () => {
                     onChange={handleFileChange}
                     accept=".pdf,.jpg,.jpeg,.png"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -635,7 +635,7 @@ const Registration = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-r from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {loading ? (
                   <span className="flex items-center gap-3">
