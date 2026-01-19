@@ -20,6 +20,7 @@ import AdminLogin from "./admin/Login";
 import AdminDashboard from "./admin/Dashboard";
 import Applications from "./admin/Applications";
 import ApplicationDetail from "./admin/ApplicationDetail";
+import Members from "./admin/Members";
 
 function App() {
   return (
