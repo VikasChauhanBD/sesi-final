@@ -15,11 +15,12 @@ sys.path.append(str(Path(__file__).parent.parent))
 from seed_data.indian_states_districts import INDIAN_STATES_DISTRICTS
 from utils.auth import get_password_hash
 
-load_dotenv(Path(__file__).parent.parent / '.env')
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
 
 async def seed_database():
     # Connect to MongoDB
-    mongo_url = os.environ['MONGO_URL']
+    mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
     client = AsyncIOMotorClient(mongo_url)
     db = client[os.environ.get('DB_NAME', 'sesi_database')]
     
