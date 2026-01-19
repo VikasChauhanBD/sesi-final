@@ -219,33 +219,43 @@ const Home = () => {
                 </div>
               )}
 
-              {/* EC Members - Horizontal Scrolling */}
+              {/* EC Members - Auto-Scrolling Horizontal */}
               {ecMembers.length > 0 && (
-                <div className="relative">
-                  <h3 className="text-center text-gray-500 text-sm font-medium mb-4">Executive Committee Members</h3>
-                  <div className="overflow-x-auto pb-4 scrollbar-hide">
-                    <div className="flex gap-4 min-w-max px-4 justify-center" data-testid="ec-members-scroll">
-                      {ecMembers.map((member) => (
+                <div className="relative mt-8">
+                  <h3 className="text-center text-gray-600 text-base font-semibold mb-6">Executive Committee Members</h3>
+                  <div 
+                    ref={scrollRef}
+                    className="overflow-x-auto pb-4 scrollbar-hide"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                  >
+                    <div className="flex gap-6 min-w-max px-4" data-testid="ec-members-scroll">
+                      {/* Duplicate members for seamless loop */}
+                      {[...ecMembers, ...ecMembers].map((member, idx) => (
                         <Link
-                          key={member.id}
+                          key={`${member.id}-${idx}`}
                           to={`/executive-committee/${member.slug}`}
-                          className="bg-gray-50 rounded-lg p-3 hover:bg-amber-50 transition group w-36 text-center flex-shrink-0 border border-gray-100"
+                          className="bg-white rounded-xl p-5 hover:bg-amber-50 transition-all group w-48 text-center flex-shrink-0 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105"
                           data-testid={`ec-member-${member.slug}`}
                         >
-                          <div className="w-14 h-14 mx-auto mb-2 rounded-full overflow-hidden bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center">
+                          <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg">
                             {member.profile_image ? (
                               <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
                             ) : (
-                              <span className="text-white text-lg font-bold">
+                              <span className="text-white text-2xl font-bold">
                                 {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
                               </span>
                             )}
                           </div>
-                          <h3 className="font-medium text-gray-900 group-hover:text-amber-700 transition text-xs truncate">{member.full_name}</h3>
+                          <h3 className="font-semibold text-gray-900 group-hover:text-amber-700 transition text-sm">{member.full_name}</h3>
+                          <p className="text-xs text-amber-600 mt-1">EC Member</p>
                         </Link>
                       ))}
                     </div>
                   </div>
+                  {/* Gradient fade edges */}
+                  <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+                  <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
                 </div>
               )}
             </div>
