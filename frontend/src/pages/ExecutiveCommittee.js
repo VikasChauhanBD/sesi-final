@@ -86,7 +86,7 @@ export const ExecutiveCommittee = () => {
                     >
                       <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
                         {member.profile_image ? (
-                          <img src={member.profile_image} alt={member.full_name} className="w-full h-full object-cover" />
+                          <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-28 h-28 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
                             <span className="text-white text-4xl font-bold">
@@ -122,7 +122,7 @@ export const ExecutiveCommittee = () => {
                     >
                       <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                         {member.profile_image ? (
-                          <img src={member.profile_image} alt={member.full_name} className="w-full h-full object-cover" />
+                          <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
                             <span className="text-white text-2xl font-bold">
