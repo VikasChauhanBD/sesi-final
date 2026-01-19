@@ -297,7 +297,7 @@ const MembersDirectory = () => {
                             </div>
                           </div>
                           <a
-                            href={`${BACKEND_URL}${member.certificate_path}`}
+                            href={`${BACKEND_URL}/api${member.certificate_path}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-lg font-medium transition shadow-md hover:shadow-lg"
