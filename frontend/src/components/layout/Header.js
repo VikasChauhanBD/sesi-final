@@ -56,7 +56,7 @@ const Header = () => {
         { name: 'Photo Gallery', path: '/gallery' },
       ]
     },
-    { name: 'News & Highlights', path: '/news' },
+    { name: 'News', path: '/news' },
     { name: 'Events', path: '/events' },
     { 
       name: 'Membership', 
