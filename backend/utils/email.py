@@ -2,10 +2,17 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def send_email(to_email: str, subject: str, body: str):
+def send_email(to_email: str, subject: str, body: str, attachment=None, attachment_name=None):
     """
     Mock email function - logs email to console
     Replace with actual SMTP implementation when email service is configured
+    
+    Args:
+        to_email: Recipient email
+        subject: Email subject
+        body: Email body text
+        attachment: File buffer (BytesIO) for attachment
+        attachment_name: Name of the attachment file
     """
     logger.info(f"""
     ============ EMAIL NOTIFICATION ============
@@ -13,11 +20,15 @@ def send_email(to_email: str, subject: str, body: str):
     Subject: {subject}
     Body:
     {body}
+    Attachment: {attachment_name if attachment else 'None'}
     ============================================
     """)
     print(f"\n📧 EMAIL SENT TO: {to_email}")
     print(f"📌 SUBJECT: {subject}")
-    print(f"📝 BODY:\n{body}\n")
+    print(f"📝 BODY:\n{body}")
+    if attachment:
+        print(f"📎 ATTACHMENT: {attachment_name}")
+    print()
     return True
 
 def send_membership_application_email(application_data: dict):
