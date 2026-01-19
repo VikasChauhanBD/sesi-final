@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
 
@@ -8,6 +8,8 @@ const Home = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const scrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
