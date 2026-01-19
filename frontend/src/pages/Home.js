@@ -78,6 +78,32 @@ const Home = () => {
     };
   }, [ecMembers.length, isPaused]);
 
+  // Auto-scroll effect for Events ticker
+  useEffect(() => {
+    const scrollContainer = eventScrollRef.current;
+    if (!scrollContainer || events.length === 0 || eventsPaused) return;
+
+    const scrollSpeed = 0.8; // pixels per frame
+    let animationId;
+
+    const scroll = () => {
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += scrollSpeed;
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    animationId = requestAnimationFrame(scroll);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [events.length, eventsPaused]);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section with Banner Image */}
