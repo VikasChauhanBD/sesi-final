@@ -141,7 +141,7 @@ const Gallery = () => {
           </button>
           <div className="max-w-4xl max-h-[90vh]" onClick={e => e.stopPropagation()}>
             <img
-              src={`${BACKEND_URL}/api${selectedImage.image_url}`}
+              src={selectedImage.image_url?.startsWith('http') ? selectedImage.image_url : `${BACKEND_URL}/api${selectedImage.image_url}`}
               alt={selectedImage.title}
               className="max-w-full max-h-[80vh] object-contain rounded-lg"
             />
