@@ -209,7 +209,7 @@ export const CommitteeMemberProfile = () => {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-40 h-40 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
               {member.profile_image ? (
-                <img src={member.profile_image} alt={member.full_name} className="w-full h-full object-cover rounded-full" />
+                <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover rounded-full" />
               ) : (
                 <span className="text-white text-5xl font-bold">
                   {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
