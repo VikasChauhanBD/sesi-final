@@ -1,51 +1,45 @@
-import { useEffect } from "react";
+import React from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Breadcrumbs from "./components/layout/Breadcrumbs";
+import Home from "./pages/Home";
+import Registration from "./pages/Registration";
+import About from "./pages/About";
+import Membership from "./pages/Membership";
+import Education from "./pages/Education";
+import Events from "./pages/Events";
+import Publications from "./pages/Publications";
+import Resources from "./pages/Resources";
+import Gallery from "./pages/Gallery";
+import News from "./pages/News";
+import Contact from "./pages/Contact";
+import Programmes from "./pages/Programmes";
+import AdminLogin from "./admin/Login";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
+        <Breadcrumbs />
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/programmes" element={<Programmes />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<AdminLogin />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
