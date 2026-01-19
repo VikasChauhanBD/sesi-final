@@ -54,11 +54,11 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Bar - Orange Theme */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-2">
+      {/* Top Bar - Toned down amber/brown */}
+      <div className="bg-gradient-to-r from-amber-800 to-red-900 text-white py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
           <div className="flex items-center gap-4">
-            <a href="mailto:info@sesi.co.in" className="flex items-center gap-1 hover:text-orange-100 transition">
+            <a href="mailto:info@sesi.co.in" className="flex items-center gap-1 hover:text-amber-200 transition">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -66,11 +66,11 @@ const Header = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/about" className="hover:text-orange-100 transition">About Us</Link>
-            <Link to="/contact" className="hover:text-orange-100 transition">Contact</Link>
+            <Link to="/about" className="hover:text-amber-200 transition">About Us</Link>
+            <Link to="/contact" className="hover:text-amber-200 transition">Contact</Link>
             <Link
               to="/registration"
-              className="bg-white text-orange-600 hover:bg-orange-100 px-4 py-1 rounded-full font-semibold transition"
+              className="bg-white text-amber-800 hover:bg-amber-100 px-4 py-1 rounded-full font-semibold transition"
               data-testid="join-btn"
             >
               Join SESI
@@ -92,12 +92,12 @@ const Header = () => {
           <div className="flex items-center justify-between py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3" data-testid="logo-link">
-              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-14 h-14 bg-gradient-to-br from-amber-700 to-red-800 rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl">SESI</span>
               </div>
               <div>
                 <h1 className="text-lg font-bold text-gray-900 leading-tight">Shoulder & Elbow</h1>
-                <p className="text-sm text-orange-600 font-medium">Society of India</p>
+                <p className="text-sm text-amber-700 font-medium">Society of India</p>
               </div>
             </Link>
 
@@ -114,8 +114,8 @@ const Header = () => {
                     to={item.path}
                     className={`px-4 py-2 text-sm font-medium transition flex items-center gap-1 ${
                       isActive(item.path)
-                        ? 'text-orange-600'
-                        : 'text-gray-700 hover:text-orange-600'
+                        ? 'text-amber-700'
+                        : 'text-gray-700 hover:text-amber-700'
                     }`}
                     data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                   >
@@ -134,7 +134,7 @@ const Header = () => {
                         <Link
                           key={subItem.path}
                           to={subItem.path}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700 transition"
                           data-testid={`subnav-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           {subItem.name}
@@ -171,7 +171,7 @@ const Header = () => {
                     to={item.path}
                     className={`block px-4 py-3 text-sm font-medium transition ${
                       isActive(item.path)
-                        ? 'text-orange-600 bg-orange-50'
+                        ? 'text-amber-700 bg-amber-50'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                     onClick={() => !item.dropdown && setMobileMenuOpen(false)}
@@ -184,7 +184,7 @@ const Header = () => {
                         <Link
                           key={subItem.path}
                           to={subItem.path}
-                          className="block px-4 py-2 text-sm text-gray-600 hover:text-orange-600"
+                          className="block px-4 py-2 text-sm text-gray-600 hover:text-amber-700"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.name}
