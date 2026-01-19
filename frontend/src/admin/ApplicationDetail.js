@@ -44,8 +44,14 @@ const ApplicationDetail = () => {
 
     setUpdating(true);
     try {
-      await adminAPI.updateApplicationStatus(id, newStatus, adminNotes);
-      alert(`Application ${newStatus} successfully!`);
+      const response = await adminAPI.updateApplicationStatus(id, newStatus, adminNotes);
+      
+      if (newStatus === 'approved' && response.data.membership_number) {
+        alert(`✅ Application Approved!\n\nMembership Number: ${response.data.membership_number}\n\nCertificate generated and sent to member via email.`);
+      } else {
+        alert(`Application ${newStatus} successfully!`);
+      }
+      
       fetchApplication();
     } catch (error) {
       console.error('Error updating status:', error);
