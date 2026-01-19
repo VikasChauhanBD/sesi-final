@@ -10,6 +10,7 @@ from models.models import (
     Event, EventCreate,
     News, NewsCreate,
     GalleryImage, GalleryImageCreate,
+    GalleryAlbum, GalleryAlbumCreate,
     Publication, PublicationCreate,
     PageSEO, PageSEOCreate
 )
