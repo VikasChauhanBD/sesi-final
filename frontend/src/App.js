@@ -4,18 +4,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Breadcrumbs from "./components/layout/Breadcrumbs";
+
+// Public Pages
 import Home from "./pages/Home";
+import Overview from "./pages/Overview";
 import Registration from "./pages/Registration";
+import NewsHighlights from "./pages/NewsHighlights";
+import EventsPage from "./pages/EventsPage";
+import { ExecutiveCommittee, CommitteeMemberProfile } from "./pages/ExecutiveCommittee";
+import { EducationInitiatives, ResearchSupport, CommunityOutreach } from "./pages/Programs";
+import { CoursesCME, WorkshopsSkillLabs, Fellowship, TrainingResources } from "./pages/EducationPages";
+
+// Placeholder pages (to be implemented)
 import About from "./pages/About";
 import Membership from "./pages/Membership";
-import Education from "./pages/Education";
-import Events from "./pages/Events";
 import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Gallery from "./pages/Gallery";
-import News from "./pages/News";
 import Contact from "./pages/Contact";
-import Programmes from "./pages/Programmes";
+
+// Admin Pages
 import AdminLogin from "./admin/Login";
 import AdminDashboard from "./admin/Dashboard";
 import Applications from "./admin/Applications";
@@ -35,19 +43,50 @@ function App() {
           <Route path="/*" element={
             <>
               <Header />
-              <Breadcrumbs />
               <Routes>
+                {/* Main Pages */}
                 <Route path="/" element={<Home />} />
+                <Route path="/overview" element={<Overview />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="/registration" element={<Registration />} />
-                <Route path="/programmes" element={<Programmes />} />
-                <Route path="/education" element={<Education />} />
-                <Route path="/events" element={<Events />} />
+                
+                {/* Executive Committee */}
+                <Route path="/executive-committee" element={<ExecutiveCommittee />} />
+                <Route path="/executive-committee/:slug" element={<CommitteeMemberProfile />} />
+                
+                {/* Programs */}
+                <Route path="/programs" element={<EducationInitiatives />} />
+                <Route path="/programs/education-initiatives" element={<EducationInitiatives />} />
+                <Route path="/programs/research-support" element={<ResearchSupport />} />
+                <Route path="/programs/community-outreach" element={<CommunityOutreach />} />
+                
+                {/* Education */}
+                <Route path="/education" element={<CoursesCME />} />
+                <Route path="/education/courses-cme" element={<CoursesCME />} />
+                <Route path="/education/workshops" element={<WorkshopsSkillLabs />} />
+                <Route path="/education/fellowship" element={<Fellowship />} />
+                <Route path="/education/training-resources" element={<TrainingResources />} />
+                
+                {/* Publications */}
                 <Route path="/publications" element={<Publications />} />
+                <Route path="/publications/jsesi" element={<Publications />} />
+                <Route path="/publications/manuscript-submission" element={<Publications />} />
+                <Route path="/publications/newsletters" element={<Publications />} />
+                
+                {/* Resources */}
                 <Route path="/resources" element={<Resources />} />
+                <Route path="/resources/guidelines" element={<Resources />} />
+                <Route path="/resources/downloads" element={<Resources />} />
+                <Route path="/resources/links" element={<Resources />} />
+                
+                {/* News & Events */}
+                <Route path="/news" element={<NewsHighlights />} />
+                <Route path="/news/:id" element={<NewsHighlights />} />
+                <Route path="/events" element={<EventsPage />} />
+                
+                {/* Other */}
                 <Route path="/gallery" element={<Gallery />} />
-                <Route path="/news" element={<News />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
               <Footer />
