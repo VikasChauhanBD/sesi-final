@@ -165,7 +165,7 @@ const Home = () => {
                     >
                       <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
                         {member.profile_image ? (
-                          <img src={`${BACKEND_URL}${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
+                          <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
                         ) : (
                           <span className="text-white text-2xl font-bold">
                             {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
@@ -194,7 +194,7 @@ const Home = () => {
                         >
                           <div className="w-14 h-14 mx-auto mb-2 rounded-full overflow-hidden bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center">
                             {member.profile_image ? (
-                              <img src={`${BACKEND_URL}${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
+                              <img src={`${BACKEND_URL}/api${member.profile_image}`} alt={member.full_name} className="w-full h-full object-cover" />
                             ) : (
                               <span className="text-white text-lg font-bold">
                                 {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
