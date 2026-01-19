@@ -50,6 +50,8 @@ const Header = () => {
       ]
     },
     { name: 'News & Highlights', path: '/news' },
+    { name: 'Events', path: '/events' },
+    { name: 'Gallery', path: '/gallery' },
     { 
       name: 'Membership', 
       path: '/membership',
