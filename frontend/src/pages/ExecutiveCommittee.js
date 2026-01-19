@@ -4,6 +4,13 @@ import { publicAPI } from '../utils/api';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
+// Helper function to get the correct image URL
+const getImageUrl = (imageUrl) => {
+  if (!imageUrl) return null;
+  if (imageUrl.startsWith('http')) return imageUrl;
+  return `${BACKEND_URL}/api${imageUrl}`;
+};
+
 // Executive Committee List Page
 export const ExecutiveCommittee = () => {
   const [committee, setCommittee] = useState([]);
