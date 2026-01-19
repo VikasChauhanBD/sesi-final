@@ -66,33 +66,45 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-700 via-orange-700 to-red-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 opacity-10">
+      {/* Hero Section with Banner Image */}
+      <section className="relative min-h-[600px] lg:min-h-[700px] text-white overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwb3J0aG9wZWRpYyUyMHN1cmdlcnklMjBob3NwaXRhbCUyMGRvY3RvcnMlMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY4ODQyNzUyfDA&ixlib=rb-4.1.0&q=85"
+            alt="Orthopedic Surgery"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-900/90 via-amber-800/80 to-red-900/70"></div>
+        </div>
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-300 rounded-full blur-3xl"></div>
         </div>
-        <div className="relative container mx-auto px-4 py-20 lg:py-32">
+        <div className="relative container mx-auto px-4 py-24 lg:py-36 flex items-center min-h-[600px] lg:min-h-[700px]">
           <div className="max-w-4xl">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
+            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+              🏥 India's Premier Orthopedic Society
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
               Shoulder & Elbow<br />Society of India
             </h1>
-            <p className="text-lg lg:text-xl text-white/90 mb-8 max-w-2xl">
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl leading-relaxed">
               A national professional organization dedicated to the advancement of education, 
               research, and clinical excellence in shoulder and elbow surgery.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/registration"
-                className="bg-white text-amber-800 hover:bg-amber-50 px-8 py-3 rounded-full font-bold text-lg transition shadow-lg"
+                className="bg-white text-amber-800 hover:bg-amber-50 px-10 py-4 rounded-full font-bold text-lg transition shadow-xl hover:shadow-2xl hover:scale-105"
                 data-testid="hero-join-btn"
               >
                 Join SESI
               </Link>
               <Link
                 to="/overview"
-                className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold text-lg transition"
+                className="border-2 border-white text-white hover:bg-white/10 px-10 py-4 rounded-full font-bold text-lg transition backdrop-blur-sm"
                 data-testid="hero-learn-btn"
               >
                 Learn More
