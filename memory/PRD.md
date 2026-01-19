@@ -93,6 +93,12 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 7. ✅ **EC Members Size** - Larger cards (192px width, 96px avatars) with auto-scrolling
 8. ✅ **Gallery Categories** - 12 images across 5 categories (Conference, Workshop, CME, Award Ceremony, Social Event)
 9. ✅ **Committee Member Photos** - All 16 committee members now have professional photos
+10. ✅ **Detailed Committee Profiles** - All 16 members have comprehensive bios from internet research including:
+    - Education & Training (Medical school, Fellowships, International training)
+    - Expertise (Specializations, Procedures performed)
+    - Positions (Current and former hospital affiliations)
+    - Achievements (Awards, Pioneering procedures, Publications)
+    - Professional Memberships
 
 ---
 
