@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 // Executive Committee List Page
 export const ExecutiveCommittee = () => {
   const [committee, setCommittee] = useState([]);
