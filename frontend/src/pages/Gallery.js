@@ -31,7 +31,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
+      <section className="bg-gradient-to-br from-amber-700 via-amber-800 to-red-900 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4" data-testid="gallery-title">Photo Gallery</h1>
           <p className="text-white/90 max-w-2xl">
@@ -50,7 +50,7 @@ const Gallery = () => {
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2 rounded-full font-medium transition whitespace-nowrap capitalize ${
                   filter === cat
-                    ? 'bg-orange-600 text-white'
+                    ? 'bg-amber-700 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 data-testid={`filter-${cat.toLowerCase().replace(' ', '-')}`}
@@ -65,7 +65,7 @@ const Gallery = () => {
       <div className="container mx-auto px-4 py-12">
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-600 border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-amber-700 border-t-transparent"></div>
           </div>
         ) : filteredImages.length === 0 ? (
           <div className="text-center py-20">
@@ -103,14 +103,14 @@ const Gallery = () => {
             <h3 className="text-lg font-bold text-gray-900 mb-4">Event Highlights Coming Soon</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 rounded-xl flex items-center justify-center">
+                <div key={i} className="aspect-square bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-2 bg-orange-200 rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 mx-auto mb-2 bg-amber-300 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <p className="text-xs text-orange-600 font-medium">Coming Soon</p>
+                    <p className="text-xs text-amber-700 font-medium">Coming Soon</p>
                   </div>
                 </div>
               ))}
@@ -126,7 +126,7 @@ const Gallery = () => {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-white hover:text-orange-500 transition"
+            className="absolute top-4 right-4 text-white hover:text-amber-500 transition"
             onClick={() => setSelectedImage(null)}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
