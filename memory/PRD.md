@@ -1,7 +1,7 @@
 # SESI (Shoulder & Elbow Society of India) Website - PRD
 
 ## Original Problem Statement
-Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society of India (SESI), matching the structure and style of sesionline.in with orange/red theme.
+Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society of India (SESI), matching the structure and style of sesionline.in with professional amber/brown theme.
 
 ## Tech Stack
 - **Frontend:** React, React Router, TailwindCSS, Axios
@@ -16,16 +16,18 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 ### ✅ Complete Public Website
 
 **Main Pages:**
-- ✅ **Home** - Hero, stats, committee preview, news, events, programs
+- ✅ **Home** - Hero, stats, committee preview (President→Office Bearers→EC Members), news, events, programs
 - ✅ **Overview** - About SESI, mission/vision, key objectives
 - ✅ **About Us** - History, mission, values, what we do
-- ✅ **Membership** - Membership types (Life/Associate), eligibility, benefits
+- ✅ **Membership** - Membership types (Life Member only), eligibility, benefits
+- ✅ **Members Directory** - Public searchable directory with expandable profiles and certificate downloads
 - ✅ **Contact** - Contact form with email/subject, contact info cards
 
 **Executive Committee:**
 - ✅ Committee list with year filter (2025-26, 2024-25, etc.)
 - ✅ Individual member profile pages with slug URLs
 - ✅ 16 actual SESI committee members seeded
+- ✅ Profile photo support
 
 **Programs:**
 - ✅ Education Initiatives
@@ -54,7 +56,7 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 - ✅ Gallery page (fetches from admin uploads)
 
 **Membership Registration:**
-- ✅ Multi-step registration form
+- ✅ Registration form (Life Member only - Associate Member removed)
 - ✅ State-District dependent dropdowns
 - ✅ File upload for certificates
 - ✅ Form validation
@@ -63,8 +65,8 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 
 - ✅ Dashboard with statistics
 - ✅ Applications management (approve/reject)
-- ✅ Members management (view approved members with certificates)
-- ✅ Committee management (CRUD with year filtering)
+- ✅ Members management (view approved members with certificates, expandable profiles)
+- ✅ Committee management (CRUD with year filtering, photo uploads)
 - ✅ Events management (CRUD with status)
 - ✅ News management (CRUD with publish/draft)
 - ✅ Gallery management (image upload)
@@ -80,10 +82,23 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 
 ---
 
+## P0 Issues Fixed (Jan 19, 2026)
+
+1. ✅ **Member Profile Expansion & PDF Download** - Created MembersDirectory.js with expandable profiles and working certificate downloads
+2. ✅ **Homepage Committee Layout** - President at top, office bearers below, EC members in horizontal scrolling row
+3. ✅ **Remove "Associate Member"** - Only "Life Member" option available in registration
+4. ✅ **Color Scheme** - Toned down from bright orange to professional amber-700/amber-800
+5. ✅ **Committee Photo Upload** - Admin panel supports profile photo uploads for committee members
+
+---
+
 ## Navigation Structure
 
 ```
-SESI Logo | Home | Overview | Programs ▼ | Education ▼ | Publications ▼ | Resources ▼ | News & Highlights | Membership
+SESI Logo | Home | Overview | Programs ▼ | Education ▼ | Publications ▼ | Resources ▼ | News & Highlights | Membership ▼
+                                                                                                              └─ About Membership
+                                                                                                              └─ Members Directory
+                                                                                                              └─ Apply Now
 
 Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 ```
@@ -102,6 +117,7 @@ Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 ## Test Status
 - **Iteration 1:** Admin panel - 24/24 passed (100%)
 - **Iteration 2:** Public pages - 17/18 passed (94%)
+- **Iteration 3:** P0 Fixes - 21/21 backend passed (100%), all frontend features working
 
 ## Test Credentials
 - **Admin URL:** `/admin`
@@ -111,6 +127,10 @@ Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 ---
 
 ## Pending Tasks
+
+### P1 - Upcoming
+1. **Update historical data** - Change existing "Associate Member" records to "Life Member" (optional)
+2. **Finalize Gallery page** - Add more categories and images
 
 ### P2 - Future
 1. **SEO Implementation**
@@ -131,6 +151,7 @@ Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 
 ### Frontend Pages
 - `/app/frontend/src/pages/Home.js`
+- `/app/frontend/src/pages/MembersDirectory.js` (NEW)
 - `/app/frontend/src/pages/ExecutiveCommittee.js`
 - `/app/frontend/src/pages/NewsHighlights.js`
 - `/app/frontend/src/pages/EventsPage.js`
@@ -143,6 +164,6 @@ Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 - `/app/frontend/src/pages/Registration.js`
 
 ### Backend
-- `/app/backend/routers/public.py` - Public API endpoints
+- `/app/backend/routers/public.py` - Public API endpoints (includes /members with certificate_path)
 - `/app/backend/routers/admin.py` - Admin API endpoints
 - `/app/backend/routers/membership.py` - Membership API
