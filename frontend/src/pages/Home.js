@@ -189,7 +189,7 @@ const Home = () => {
                   >
                     <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-amber-600 to-red-700 flex items-center justify-center shadow-lg">
                       {president.profile_image ? (
-                        <img src={`${BACKEND_URL}/api${president.profile_image}`} alt={president.full_name} className="w-full h-full object-cover" />
+                        <img src={getImageUrl(president.profile_image, BACKEND_URL)} alt={president.full_name} className="w-full h-full object-cover" />
                       ) : (
                         <span className="text-white text-4xl font-bold">
                           {president.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
