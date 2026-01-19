@@ -84,6 +84,7 @@ class CommitteeMemberCreate(BaseModel):
     email: Optional[str] = None
     mobile: Optional[str] = None
     bio: Optional[str] = None
+    profile_image: Optional[str] = None
     year: int
     display_order: int = 0
     is_current: bool = True
