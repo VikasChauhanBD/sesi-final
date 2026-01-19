@@ -49,7 +49,15 @@ const Header = () => {
       ]
     },
     { name: 'News & Highlights', path: '/news' },
-    { name: 'Membership', path: '/membership' },
+    { 
+      name: 'Membership', 
+      path: '/membership',
+      dropdown: [
+        { name: 'About Membership', path: '/membership' },
+        { name: 'Members Directory', path: '/members' },
+        { name: 'Apply Now', path: '/registration' },
+      ]
+    },
   ];
 
   return (

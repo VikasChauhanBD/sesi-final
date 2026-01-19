@@ -18,6 +18,7 @@ import { CoursesCME, WorkshopsSkillLabs, Fellowship, TrainingResources } from ".
 // Placeholder pages (to be implemented)
 import About from "./pages/About";
 import Membership from "./pages/Membership";
+import MembersDirectory from "./pages/MembersDirectory";
 import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Gallery from "./pages/Gallery";
@@ -49,6 +50,7 @@ function App() {
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/membership" element={<Membership />} />
+                <Route path="/members" element={<MembersDirectory />} />
                 <Route path="/registration" element={<Registration />} />
                 
                 {/* Executive Committee */}
