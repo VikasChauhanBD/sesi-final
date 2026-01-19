@@ -148,6 +148,26 @@ class NewsCreate(BaseModel):
     is_published: bool = True
 
 # Gallery Models
+class GalleryAlbum(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    title: str
+    description: Optional[str] = None
+    event_date: Optional[str] = None  # e.g., "January 2025"
+    location: Optional[str] = None
+    category: Optional[str] = None  # Conference, Workshop, CME, etc.
+    cover_image: Optional[str] = None
+    photo_count: int = 0
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    is_published: bool = True
+
+class GalleryAlbumCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    event_date: Optional[str] = None
+    location: Optional[str] = None
+    category: Optional[str] = None
+
 class GalleryImage(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -155,7 +175,7 @@ class GalleryImage(BaseModel):
     description: Optional[str] = None
     image_url: str
     category: Optional[str] = None  # Event, Conference, Workshop
-    event_id: Optional[str] = None
+    album_id: Optional[str] = None
     upload_date: datetime = Field(default_factory=datetime.utcnow)
     display_order: int = 0
 
@@ -163,7 +183,7 @@ class GalleryImageCreate(BaseModel):
     title: str
     description: Optional[str] = None
     category: Optional[str] = None
-    event_id: Optional[str] = None
+    album_id: Optional[str] = None
     display_order: int = 0
 
 # Publication Models
