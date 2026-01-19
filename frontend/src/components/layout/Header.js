@@ -129,7 +129,7 @@ const Header = () => {
                 >
                   <Link
                     to={item.path}
-                    className={`px-4 py-2 text-sm font-medium transition flex items-center gap-1 ${
+                    className={`px-3 py-2 text-sm font-medium transition flex items-center gap-1 whitespace-nowrap ${
                       isActive(item.path)
                         ? 'text-amber-700'
                         : 'text-gray-700 hover:text-amber-700'
