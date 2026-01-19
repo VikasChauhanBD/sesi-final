@@ -48,6 +48,9 @@ export const publicAPI = {
   
   // SEO
   getPageSEO: (pageName) => api.get(`/public/seo/${pageName}`),
+  
+  // Contact Form
+  submitContactForm: (data) => api.post('/public/contact', data),
 };
 
 // Membership APIs
