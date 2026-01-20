@@ -1,0 +1,16 @@
+# Robots.txt for Shoulder & Elbow Society of India (SESI)
+# https://sesionline.in
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /api/*
+
+# Sitemap location
+Sitemap: https://sesionline.in/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
