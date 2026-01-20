@@ -38,14 +38,15 @@ import ManageGallery from "./admin/ManageGallery";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes with Header/Footer */}
-          <Route path="/*" element={
-            <>
-              <Header />
-              <Routes>
+    <HelmetProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes with Header/Footer */}
+            <Route path="/*" element={
+              <>
+                <Header />
+                <Routes>
                 {/* Main Pages */}
                 <Route path="/" element={<Home />} />
                 <Route path="/overview" element={<Overview />} />
