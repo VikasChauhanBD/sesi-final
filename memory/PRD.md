@@ -157,21 +157,17 @@ Top Bar: info@sesi.co.in | About Us | Contact | Join SESI | Login
 ## Pending Tasks
 
 ### P1 - Upcoming
-1. **Update historical data** - Change existing "Associate Member" records to "Life Member" (optional)
-2. **Finalize Gallery page** - Add more categories and images
+1. **Member Login Portal** - Login for approved members
+2. **Real Email Integration** - Replace mocked emails
 
 ### P2 - Future
-1. **SEO Implementation**
-   - sitemap.xml, robots.txt
-   - Schema.org markup
-   - Meta tags per page
-2. **Member Login Portal** - Login for approved members
-3. **Real Email Integration** - Replace mocked emails
-
-### P3 - Backlog
 1. **Payment Integration** - Razorpay/Stripe for membership fees
 2. **Conference Registration Module**
 3. **Member Dashboard** - Personal profile management
+
+### P3 - Backlog
+1. **Image lazy loading** - Optimize image loading across the site
+2. **Performance optimization** - Bundle size reduction, caching
 
 ---
 
