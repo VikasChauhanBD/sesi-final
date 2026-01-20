@@ -10,6 +10,10 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from datetime import datetime
 import io
+import os
+
+# Get app URL from environment variable with fallback
+APP_URL = os.environ.get('APP_URL', 'https://sesi.co.in').replace('https://', '').replace('http://', '')
 
 def generate_membership_certificate(member_data):
     """
