@@ -129,7 +129,7 @@ def generate_membership_certificate(member_data):
     # Bottom text
     c.setFont("Helvetica", 9)
     c.setFillColor(colors.HexColor('#6b7280'))
-    c.drawCentredString(width/2, 0.8*inch, "Shoulder & Elbow Society of India | www.sesi.co.in | info@sesi.co.in")
+    c.drawCentredString(width/2, 0.8*inch, f"Shoulder & Elbow Society of India | {APP_URL} | info@sesi.co.in")
     
     # Save PDF
     c.save()
