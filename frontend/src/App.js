@@ -1,6 +1,7 @@
 import React from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Breadcrumbs from "./components/layout/Breadcrumbs";
