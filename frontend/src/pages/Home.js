@@ -19,9 +19,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const scrollRef = useRef(null);
-  const eventScrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [eventsPaused, setEventsPaused] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
