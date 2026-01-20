@@ -79,6 +79,12 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Home"
+        description="Official website of the Shoulder & Elbow Society of India (SESI). Join 480+ active members, access CME credits, events, publications, and advance shoulder & elbow surgery in India."
+        keywords="SESI, Shoulder Elbow Society India, orthopaedic society, shoulder surgery, elbow surgery, medical education, CME, rotator cuff"
+        canonical="/"
+      />
       {/* Hero Section with Banner Image */}
       <section className="relative min-h-[600px] lg:min-h-[700px] text-white overflow-hidden">
         {/* Background Image */}
