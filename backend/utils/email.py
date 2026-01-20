@@ -119,7 +119,7 @@ def send_approval_email_with_certificate(application_data: dict, certificate_buf
     
     🌐 Next Steps:
     1. Download and save your membership certificate
-    2. Visit our website: https://sesi.co.in
+    2. Visit our website: {APP_URL}
     3. Stay updated on upcoming events and conferences
     4. Connect with fellow members
     
