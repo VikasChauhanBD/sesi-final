@@ -58,7 +58,7 @@ def send_membership_application_email(application_data: dict):
     Best regards,
     SESI Admin Team
     Shoulder & Elbow Society of India
-    Website: https://sesi.co.in
+    Website: {APP_URL}
     """
     
     send_email(applicant_email, applicant_subject, applicant_body)
