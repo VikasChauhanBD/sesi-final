@@ -128,37 +128,35 @@ const Home = () => {
 
       {/* Upcoming Events Ticker Banner */}
       {events.length > 0 && (
-        <section className="bg-gradient-to-r from-amber-600 to-red-700 text-white py-4 overflow-hidden">
-          <div className="flex items-center">
-            <div className="flex-shrink-0 bg-white text-amber-700 px-5 py-2 rounded-r-full font-bold text-sm flex items-center gap-2 shadow-lg z-10">
-              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-              UPCOMING
+        <section className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 text-white relative overflow-hidden">
+          <div className="flex items-stretch">
+            {/* Fixed Label */}
+            <div className="flex-shrink-0 bg-amber-800 px-6 py-4 font-bold text-sm flex items-center gap-2 border-r border-amber-500">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+              UPCOMING EVENTS
             </div>
-            <div className="flex-1 overflow-hidden mx-6">
-              <div 
-                className="flex gap-20 animate-scroll-left whitespace-nowrap"
-                style={{ width: 'max-content' }}
-              >
-                {[...events, ...events, ...events].map((event, idx) => (
-                  <Link
-                    key={`${event.id}-${idx}`}
-                    to="/events"
-                    className="inline-flex items-center gap-3 hover:text-amber-200 transition"
-                  >
-                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="font-bold">{event.title}</span>
-                    <span className="text-white/60">|</span>
-                    <span className="text-amber-200 font-medium">{event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'TBA'}</span>
-                    {event.location && (
-                      <>
-                        <span className="text-white/60">|</span>
-                        <span className="text-white/90">{event.location}</span>
-                      </>
-                    )}
-                  </Link>
-                ))}
+            {/* Scrolling Content */}
+            <div className="flex-1 overflow-hidden py-4">
+              <div className="ticker-wrapper">
+                <div className="ticker-content">
+                  {[...events, ...events].map((event, idx) => (
+                    <Link
+                      key={`${event.id}-${idx}`}
+                      to="/events"
+                      className="ticker-item"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="font-bold">{event.title}</span>
+                      <span className="text-amber-200">
+                        {event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'Coming Soon'}
+                      </span>
+                      {event.location && <span className="text-white/70">📍 {event.location}</span>}
+                      <span className="mx-8 text-amber-300">★</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
