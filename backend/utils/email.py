@@ -131,7 +131,7 @@ def send_approval_email_with_certificate(application_data: dict, certificate_buf
     Best regards,
     SESI Admin Team
     Shoulder & Elbow Society of India
-    Website: https://sesi.co.in
+    Website: {APP_URL}
     """
     
     send_email(
