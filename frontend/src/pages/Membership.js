@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const Membership = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Life Membership"
+        description="Join SESI as a Life Member. Become part of India's premier society for shoulder & elbow surgery. Benefits include CME credits, conference access, publications, and networking."
+        keywords="SESI membership, life member, orthopaedic society membership, join SESI, medical society India"
+        canonical="/membership"
+      />
       {/* Hero */}
       <section className="bg-gradient-to-r from-amber-800 to-red-900 text-white py-16">
         <div className="container mx-auto px-4">
