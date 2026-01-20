@@ -38,6 +38,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Contact Us"
+        description="Contact the Shoulder & Elbow Society of India (SESI). Get in touch for membership inquiries, event information, or general questions. Email: info@sesi.co.in"
+        keywords="contact SESI, SESI email, orthopaedic society contact, membership inquiry"
+        canonical="/contact"
+      />
       {/* Hero */}
       <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="container mx-auto px-4">
