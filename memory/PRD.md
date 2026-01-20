@@ -82,7 +82,7 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 
 ---
 
-## P0 Issues Fixed (Jan 19, 2026)
+## P0 Issues Fixed (Jan 19-20, 2026)
 
 1. ✅ **Member Profile Expansion & PDF Download** - Created MembersDirectory.js with expandable profiles and working certificate downloads
 2. ✅ **Homepage Committee Layout** - President at top, office bearers below, EC members in horizontal scrolling row (auto-scrolling)
