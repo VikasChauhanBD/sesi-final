@@ -1,13 +1,46 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 // Resources Landing Page
 const Resources = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // SEO data for each sub-page
+  const seoData = {
+    '/resources': {
+      title: 'Resources',
+      description: 'SESI resources hub with clinical guidelines, downloads, protocols, and educational tools supporting evidence-based practice in shoulder & elbow surgery.',
+      keywords: 'SESI resources, clinical guidelines, orthopaedic downloads, medical education resources'
+    },
+    '/resources/guidelines': {
+      title: 'Clinical Guidelines',
+      description: 'Evidence-based clinical guidelines for shoulder and elbow surgery developed by SESI expert committees to standardize care and improve patient outcomes.',
+      keywords: 'clinical guidelines, rotator cuff guidelines, shoulder surgery protocols, elbow treatment guidelines'
+    },
+    '/resources/downloads': {
+      title: 'Downloads Center',
+      description: 'Download SESI official documents, forms, templates, patient education materials, and conference brochures.',
+      keywords: 'SESI downloads, membership forms, fellowship application, patient education'
+    },
+    '/resources/links': {
+      title: 'Learning Links',
+      description: 'Curated collection of educational and clinical resources for surgeons, physiotherapists, trainees, and patients in shoulder & elbow surgery.',
+      keywords: 'orthopaedic learning, medical education links, shoulder surgery resources, ASES, ESES'
+    }
+  };
+
+  const currentSEO = seoData[currentPath] || seoData['/resources'];
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title={currentSEO.title}
+        description={currentSEO.description}
+        keywords={currentSEO.keywords}
+        canonical={currentPath}
+      />
       <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Resources</h1>
