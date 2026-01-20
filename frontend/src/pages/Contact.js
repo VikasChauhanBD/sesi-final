@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { publicAPI } from '../utils/api';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
