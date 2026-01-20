@@ -156,45 +156,38 @@ const Home = () => {
 
       {/* Upcoming Events Ticker Banner */}
       {events.length > 0 && (
-        <section className="bg-gradient-to-r from-amber-600 to-red-700 text-white py-3 relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-amber-600 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-red-700 to-transparent z-10"></div>
-          <div className="container mx-auto px-4">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0 bg-white text-amber-700 px-4 py-1 rounded-full font-bold text-sm flex items-center gap-2 z-20">
-                <svg className="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10"/>
-                </svg>
-                UPCOMING EVENTS
-              </div>
+        <section className="bg-gradient-to-r from-amber-600 to-red-700 text-white py-3 overflow-hidden">
+          <div className="flex items-center">
+            <div className="flex-shrink-0 bg-white text-amber-700 px-4 py-1 rounded-r-full font-bold text-sm flex items-center gap-2 shadow-lg">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+              UPCOMING EVENTS
+            </div>
+            <div className="flex-1 overflow-hidden ml-4">
               <div 
-                ref={eventScrollRef}
-                className="flex-1 overflow-hidden"
-                onMouseEnter={() => setEventsPaused(true)}
-                onMouseLeave={() => setEventsPaused(false)}
+                className="flex gap-16 animate-scroll-left"
+                onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+                onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
               >
-                <div className="flex gap-12 min-w-max animate-marquee" data-testid="events-ticker">
-                  {[...events, ...events].map((event, idx) => (
-                    <Link
-                      key={`${event.id}-${idx}`}
-                      to="/events"
-                      className="flex items-center gap-3 whitespace-nowrap hover:text-amber-200 transition"
-                    >
-                      <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span className="font-semibold">{event.title}</span>
-                      <span className="text-white/70">•</span>
-                      <span className="text-amber-200">{event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'TBA'}</span>
-                      {event.location && (
-                        <>
-                          <span className="text-white/70">•</span>
-                          <span className="text-white/80">{event.location}</span>
-                        </>
-                      )}
-                    </Link>
-                  ))}
-                </div>
+                {[...events, ...events, ...events].map((event, idx) => (
+                  <Link
+                    key={`${event.id}-${idx}`}
+                    to="/events"
+                    className="flex items-center gap-3 whitespace-nowrap hover:text-amber-200 transition flex-shrink-0"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="font-semibold">{event.title}</span>
+                    <span className="text-white/70">•</span>
+                    <span className="text-amber-200">{event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'TBA'}</span>
+                    {event.location && (
+                      <>
+                        <span className="text-white/70">•</span>
+                        <span className="text-white/80">{event.location}</span>
+                      </>
+                    )}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
