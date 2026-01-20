@@ -231,7 +231,7 @@ const Members = () => {
                       <h4 className="font-semibold text-gray-900 mb-4">Membership Certificate</h4>
                       {member.certificate_path ? (
                         <a
-                          href={`${BACKEND_URL}${member.certificate_path}`}
+                          href={`${BACKEND_URL}/api${member.certificate_path}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition"
@@ -244,7 +244,7 @@ const Members = () => {
                         </a>
                       ) : (
                         <p className="text-gray-500 text-sm">Certificate not available</p>
-                      )}
+                      )}}
                     </div>
                   </div>
                 )}
