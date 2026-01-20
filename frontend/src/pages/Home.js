@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
+import SEO from '../components/SEO';
 
 // Helper function to get the correct image URL
 const getImageUrl = (imageUrl, backendUrl) => {
