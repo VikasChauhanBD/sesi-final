@@ -77,7 +77,7 @@ def send_membership_application_email(application_data: dict):
     Region: {application_data.get('region_membership')}
     
     Please review the application in the admin panel:
-    https://sesi.co.in/admin/applications/{application_id}
+    {APP_URL}/admin/applications/{application_id}
     
     Best regards,
     SESI System
