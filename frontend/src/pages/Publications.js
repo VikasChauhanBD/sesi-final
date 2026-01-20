@@ -1,13 +1,46 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 // Publications Landing Page
 const Publications = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // SEO data for each sub-page
+  const seoData = {
+    '/publications': {
+      title: 'Publications',
+      description: 'SESI promotes academic excellence through official publications, peer-reviewed journals, newsletters, and educational articles for shoulder & elbow surgery.',
+      keywords: 'SESI publications, JSESI journal, orthopaedic research, medical publications, shoulder elbow research'
+    },
+    '/publications/jsesi': {
+      title: 'JSESI - Journal of SESI',
+      description: 'The Journal of Shoulder and Elbow Society of India (JSESI) - Official peer-reviewed publication dedicated to advancing scientific knowledge in shoulder and elbow surgery.',
+      keywords: 'JSESI, shoulder elbow journal, orthopaedic journal India, peer reviewed medical journal'
+    },
+    '/publications/manuscript-submission': {
+      title: 'Manuscript Submission Guidelines',
+      description: 'Submit your research to JSESI. Guidelines for manuscript submission including article types, requirements, and peer review process.',
+      keywords: 'manuscript submission, JSESI submission, research paper submission, orthopaedic research'
+    },
+    '/publications/newsletters': {
+      title: 'SESI Newsletters',
+      description: 'Stay updated with SESI newsletters featuring society news, events, member achievements, and developments in shoulder & elbow surgery.',
+      keywords: 'SESI newsletter, orthopaedic society news, medical newsletter'
+    }
+  };
+
+  const currentSEO = seoData[currentPath] || seoData['/publications'];
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title={currentSEO.title}
+        description={currentSEO.description}
+        keywords={currentSEO.keywords}
+        canonical={currentPath}
+      />
       <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Publications</h1>
