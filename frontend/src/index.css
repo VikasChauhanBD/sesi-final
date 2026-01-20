@@ -124,20 +124,40 @@ code {
     display: none;
 }
 
-/* Scrolling ticker animation */
-@keyframes scroll-left {
+/* News Ticker Styles */
+.ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ticker-content {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+}
+
+.ticker-content:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.ticker-item:hover {
+    color: #fde68a;
+}
+
+@keyframes ticker {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-33.33%);
+        transform: translateX(-50%);
     }
-}
-
-.animate-scroll-left {
-    animation: scroll-left 20s linear infinite;
-}
-
-.animate-scroll-left:hover {
-    animation-play-state: paused;
 }
