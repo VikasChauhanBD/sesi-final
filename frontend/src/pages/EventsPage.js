@@ -39,6 +39,12 @@ const EventsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Events & Conferences"
+        description="Attend SESI conferences, workshops, and CME programs. Stay updated on upcoming events, SESICON annual meetings, and continuing medical education opportunities."
+        keywords="SESI events, orthopaedic conferences, SESICON, medical workshops, CME programs, shoulder elbow conference"
+        canonical="/events"
+      />
       {/* Hero */}
       <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-16">
         <div className="container mx-auto px-4">
