@@ -107,9 +107,10 @@ function App() {
           <Route path="/admin/events" element={<ManageEvents />} />
           <Route path="/admin/news" element={<ManageNews />} />
           <Route path="/admin/gallery" element={<ManageGallery />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </HelmetProvider>
   );
 }
 
