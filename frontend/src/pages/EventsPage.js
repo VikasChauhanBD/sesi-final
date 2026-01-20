@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAPI } from '../utils/api';
+import SEO from '../components/SEO';
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
