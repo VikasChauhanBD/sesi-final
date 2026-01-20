@@ -111,6 +111,11 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
 13. ✅ **Homepage Enhancements**:
     - Scrolling "UPCOMING EVENTS" ticker banner below hero
     - Photo Gallery preview section with 4 album cards
+14. ✅ **Admin Document Viewing** (Jan 20, 2026):
+    - Verified document and certificate links working in Application Detail view
+    - URLs properly include `/api` prefix for static file access
+    - Uploaded documents (MBBS, Orthopedic, State Registration) viewable
+    - Certificate download working for approved applications
 
 ---
 
