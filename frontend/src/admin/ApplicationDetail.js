@@ -262,7 +262,7 @@ const ApplicationDetail = () => {
                         </div>
                       </div>
                       <a
-                        href={`${BACKEND_URL}${doc.path}`}
+                        href={`${BACKEND_URL}/api${doc.path}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-teal-600 hover:text-teal-700 font-medium text-sm flex items-center gap-1"
@@ -368,7 +368,7 @@ const ApplicationDetail = () => {
                   
                   {application.certificate_path && (
                     <a
-                      href={`${BACKEND_URL}${application.certificate_path}`}
+                      href={`${BACKEND_URL}/api${application.certificate_path}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition"
