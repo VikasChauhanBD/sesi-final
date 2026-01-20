@@ -128,34 +128,33 @@ const Home = () => {
 
       {/* Upcoming Events Ticker Banner */}
       {events.length > 0 && (
-        <section className="bg-gradient-to-r from-amber-600 to-red-700 text-white py-3 overflow-hidden">
+        <section className="bg-gradient-to-r from-amber-600 to-red-700 text-white py-4 overflow-hidden">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-white text-amber-700 px-4 py-1 rounded-r-full font-bold text-sm flex items-center gap-2 shadow-lg">
+            <div className="flex-shrink-0 bg-white text-amber-700 px-5 py-2 rounded-r-full font-bold text-sm flex items-center gap-2 shadow-lg z-10">
               <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-              UPCOMING EVENTS
+              UPCOMING
             </div>
-            <div className="flex-1 overflow-hidden ml-4">
+            <div className="flex-1 overflow-hidden mx-6">
               <div 
-                className="flex gap-16 animate-scroll-left"
-                onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
-                onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+                className="flex gap-20 animate-scroll-left whitespace-nowrap"
+                style={{ width: 'max-content' }}
               >
                 {[...events, ...events, ...events].map((event, idx) => (
                   <Link
                     key={`${event.id}-${idx}`}
                     to="/events"
-                    className="flex items-center gap-3 whitespace-nowrap hover:text-amber-200 transition flex-shrink-0"
+                    className="inline-flex items-center gap-3 hover:text-amber-200 transition"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-semibold">{event.title}</span>
-                    <span className="text-white/70">•</span>
-                    <span className="text-amber-200">{event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'TBA'}</span>
+                    <span className="font-bold">{event.title}</span>
+                    <span className="text-white/60">|</span>
+                    <span className="text-amber-200 font-medium">{event.date ? new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'TBA'}</span>
                     {event.location && (
                       <>
-                        <span className="text-white/70">•</span>
-                        <span className="text-white/80">{event.location}</span>
+                        <span className="text-white/60">|</span>
+                        <span className="text-white/90">{event.location}</span>
                       </>
                     )}
                   </Link>
