@@ -41,6 +41,12 @@ export const ExecutiveCommittee = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Executive Committee"
+        description="Meet the SESI Executive Committee - dedicated leaders guiding the Shoulder & Elbow Society of India's mission to advance shoulder and elbow surgery."
+        keywords="SESI executive committee, SESI office bearers, orthopaedic society leadership, SESI president"
+        canonical="/executive-committee"
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-amber-700 via-amber-800 to-red-900 text-white py-16">
         <div className="container mx-auto px-4">
