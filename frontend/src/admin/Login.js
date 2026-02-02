@@ -77,14 +77,6 @@ const Login = () => {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
-
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>Default credentials:</p>
-          <p className="font-mono text-xs mt-2">
-            Email: admin@sesi.co.in<br />
-            Password: Admin@SESI2025
-          </p>
-        </div>
       </div>
     </div>
   );
