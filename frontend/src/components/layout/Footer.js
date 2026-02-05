@@ -234,11 +234,17 @@ const Footer = () => {
               All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-orange-500 transition">
+              <Link
+                to="/privacy-policy"
+                className="hover:text-orange-500 transition"
+              >
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="hover:text-orange-500 transition">
-                Terms of Use
+              <Link
+                to="/terms-and-conditions"
+                className="hover:text-orange-500 transition"
+              >
+                Terms & Conditions (T&C)
               </Link>
             </div>
           </div>

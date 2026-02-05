@@ -12,9 +12,21 @@ import Overview from "./pages/Overview";
 import Registration from "./pages/Registration";
 import NewsHighlights from "./pages/NewsHighlights";
 import EventsPage from "./pages/EventsPage";
-import { ExecutiveCommittee, CommitteeMemberProfile } from "./pages/ExecutiveCommittee";
-import { EducationInitiatives, ResearchSupport, CommunityOutreach } from "./pages/Programs";
-import { CoursesCME, WorkshopsSkillLabs, Fellowship, TrainingResources } from "./pages/EducationPages";
+import {
+  ExecutiveCommittee,
+  CommitteeMemberProfile,
+} from "./pages/ExecutiveCommittee";
+import {
+  EducationInitiatives,
+  ResearchSupport,
+  CommunityOutreach,
+} from "./pages/Programs";
+import {
+  CoursesCME,
+  WorkshopsSkillLabs,
+  Fellowship,
+  TrainingResources,
+} from "./pages/EducationPages";
 
 // Placeholder pages (to be implemented)
 import About from "./pages/About";
@@ -24,6 +36,9 @@ import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 
 // Admin Pages
 import AdminLogin from "./admin/Login";
@@ -43,70 +58,133 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* Public Routes with Header/Footer */}
-            <Route path="/*" element={
-              <>
-                <Header />
-                <Routes>
-                {/* Main Pages */}
-                <Route path="/" element={<Home />} />
-                <Route path="/overview" element={<Overview />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/membership" element={<Membership />} />
-                <Route path="/members" element={<MembersDirectory />} />
-                <Route path="/registration" element={<Registration />} />
-                
-                {/* Executive Committee */}
-                <Route path="/executive-committee" element={<ExecutiveCommittee />} />
-                <Route path="/executive-committee/:slug" element={<CommitteeMemberProfile />} />
-                
-                {/* Programs */}
-                <Route path="/programs" element={<EducationInitiatives />} />
-                <Route path="/programs/education-initiatives" element={<EducationInitiatives />} />
-                <Route path="/programs/research-support" element={<ResearchSupport />} />
-                <Route path="/programs/community-outreach" element={<CommunityOutreach />} />
-                
-                {/* Education */}
-                <Route path="/education" element={<CoursesCME />} />
-                <Route path="/education/courses-cme" element={<CoursesCME />} />
-                <Route path="/education/workshops" element={<WorkshopsSkillLabs />} />
-                <Route path="/education/fellowship" element={<Fellowship />} />
-                <Route path="/education/training-resources" element={<TrainingResources />} />
-                
-                {/* Publications */}
-                <Route path="/publications" element={<Publications />} />
-                <Route path="/publications/jsesi" element={<Publications />} />
-                <Route path="/publications/manuscript-submission" element={<Publications />} />
-                <Route path="/publications/newsletters" element={<Publications />} />
-                
-                {/* Resources */}
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/resources/guidelines" element={<Resources />} />
-                <Route path="/resources/downloads" element={<Resources />} />
-                <Route path="/resources/links" element={<Resources />} />
-                
-                {/* News & Events */}
-                <Route path="/news" element={<NewsHighlights />} />
-                <Route path="/news/:id" element={<NewsHighlights />} />
-                <Route path="/events" element={<EventsPage />} />
-                
-                {/* Other */}
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-              <Footer />
-            </>
-          } />
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Header />
+                  <Routes>
+                    {/* Main Pages */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/overview" element={<Overview />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/membership" element={<Membership />} />
+                    <Route path="/members" element={<MembersDirectory />} />
+                    <Route path="/registration" element={<Registration />} />
 
-          {/* Admin Routes without Header/Footer */}
-          <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/applications" element={<Applications />} />
-          <Route path="/admin/applications/:id" element={<ApplicationDetail />} />
-          <Route path="/admin/members" element={<Members />} />
-          <Route path="/admin/committee" element={<ManageCommittee />} />
-          <Route path="/admin/events" element={<ManageEvents />} />
-          <Route path="/admin/news" element={<ManageNews />} />
-          <Route path="/admin/gallery" element={<ManageGallery />} />
+                    {/* Executive Committee */}
+                    <Route
+                      path="/executive-committee"
+                      element={<ExecutiveCommittee />}
+                    />
+                    <Route
+                      path="/executive-committee/:slug"
+                      element={<CommitteeMemberProfile />}
+                    />
+
+                    {/* Programs */}
+                    <Route
+                      path="/programs"
+                      element={<EducationInitiatives />}
+                    />
+                    <Route
+                      path="/programs/education-initiatives"
+                      element={<EducationInitiatives />}
+                    />
+                    <Route
+                      path="/programs/research-support"
+                      element={<ResearchSupport />}
+                    />
+                    <Route
+                      path="/programs/community-outreach"
+                      element={<CommunityOutreach />}
+                    />
+
+                    {/* Education */}
+                    <Route path="/education" element={<CoursesCME />} />
+                    <Route
+                      path="/education/courses-cme"
+                      element={<CoursesCME />}
+                    />
+                    <Route
+                      path="/education/workshops"
+                      element={<WorkshopsSkillLabs />}
+                    />
+                    <Route
+                      path="/education/fellowship"
+                      element={<Fellowship />}
+                    />
+                    <Route
+                      path="/education/training-resources"
+                      element={<TrainingResources />}
+                    />
+
+                    {/* Publications */}
+                    <Route path="/publications" element={<Publications />} />
+                    <Route
+                      path="/publications/jsesi"
+                      element={<Publications />}
+                    />
+                    <Route
+                      path="/publications/manuscript-submission"
+                      element={<Publications />}
+                    />
+                    <Route
+                      path="/publications/newsletters"
+                      element={<Publications />}
+                    />
+
+                    {/* Resources */}
+                    <Route path="/resources" element={<Resources />} />
+                    <Route
+                      path="/resources/guidelines"
+                      element={<Resources />}
+                    />
+                    <Route
+                      path="/resources/downloads"
+                      element={<Resources />}
+                    />
+                    <Route path="/resources/links" element={<Resources />} />
+
+                    {/* News & Events */}
+                    <Route path="/news" element={<NewsHighlights />} />
+                    <Route path="/news/:id" element={<NewsHighlights />} />
+                    <Route path="/events" element={<EventsPage />} />
+
+                    {/* Mandatory policies */}
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route
+                      path="/terms-and-conditions"
+                      element={<TermsConditions />}
+                    />
+                    <Route
+                      path="/cancellation-and-refund-policy"
+                      element={<CancellationRefundPolicy />}
+                    />
+
+                    {/* Other */}
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/contact" element={<Contact />} />
+                  </Routes>
+
+                  <Footer />
+                </>
+              }
+            />
+
+            {/* Admin Routes without Header/Footer */}
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/applications" element={<Applications />} />
+            <Route
+              path="/admin/applications/:id"
+              element={<ApplicationDetail />}
+            />
+            <Route path="/admin/members" element={<Members />} />
+            <Route path="/admin/committee" element={<ManageCommittee />} />
+            <Route path="/admin/events" element={<ManageEvents />} />
+            <Route path="/admin/news" element={<ManageNews />} />
+            <Route path="/admin/gallery" element={<ManageGallery />} />
           </Routes>
         </BrowserRouter>
       </div>
