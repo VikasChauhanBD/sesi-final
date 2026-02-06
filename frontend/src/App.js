@@ -27,6 +27,7 @@ import Contact from "./pages/Contact";
 import EventDetails from "./pages/EventDetails";
 import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 
 // Admin Pages
 import AdminLogin from "./admin/Login";
