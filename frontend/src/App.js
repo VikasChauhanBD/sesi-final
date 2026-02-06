@@ -12,6 +12,7 @@ import Overview from "./pages/Overview";
 import Registration from "./pages/Registration";
 import NewsHighlights from "./pages/NewsHighlights";
 import EventsPage from "./pages/EventsPage";
+import EventDetails from "./pages/EventDetails";
 import {
   ExecutiveCommittee,
   CommitteeMemberProfile,
@@ -150,6 +151,7 @@ function App() {
                     <Route path="/news" element={<NewsHighlights />} />
                     <Route path="/news/:id" element={<NewsHighlights />} />
                     <Route path="/events" element={<EventsPage />} />
+                    <Route path="/event-details" element={<EventDetails />} />
 
                     {/* Mandatory policies */}
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
