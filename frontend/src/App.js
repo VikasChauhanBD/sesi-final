@@ -97,6 +97,7 @@ function App() {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               </Routes>
               <Footer />
             </>
