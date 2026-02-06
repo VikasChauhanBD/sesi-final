@@ -24,6 +24,7 @@ import Publications from "./pages/Publications";
 import Resources from "./pages/Resources";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import EventDetails from "./pages/EventDetails";
 
 // Admin Pages
 import AdminLogin from "./admin/Login";
