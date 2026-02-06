@@ -95,6 +95,7 @@ function App() {
                 {/* Other */}
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
               </Routes>
               <Footer />
             </>
