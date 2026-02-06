@@ -160,7 +160,7 @@ function App() {
                       element={<TermsConditions />}
                     />
                     <Route
-                      path="/cancellation-and-refund-policy"
+                      path="/cancellation-refund-policy"
                       element={<CancellationRefundPolicy />}
                     />
 

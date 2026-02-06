@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* About */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
@@ -33,6 +33,7 @@ const Footer = () => {
                 { name: "Overview", path: "/overview" },
                 { name: "Membership", path: "/membership" },
                 { name: "Events", path: "/events" },
+                { name: "Event Details", path: "/event-details" },
                 { name: "News", path: "/news" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
@@ -64,6 +65,36 @@ const Footer = () => {
                 { name: "Courses & CME", path: "/education/courses-cme" },
                 { name: "Workshops", path: "/education/workshops" },
                 { name: "Fellowship", path: "/education/fellowship" },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-400 hover:text-orange-500 transition text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Mandatory policies */}
+          <div>
+            <h4 className="font-bold text-lg mb-4">Mandatory policies</h4>
+            <ul className="space-y-2">
+              {[
+                {
+                  name: "Privacy Policy",
+                  path: "/privacy-policy",
+                },
+                {
+                  name: "Terms & Conditions (T&C)",
+                  path: "/terms-and-conditions",
+                },
+                {
+                  name: "Cancellation & Refund Policy",
+                  path: "/cancellation-refund-policy",
+                },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -227,27 +258,11 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>
-              © {new Date().getFullYear()} Shoulder and Elbow Society of India.
-              All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                to="/privacy-policy"
-                className="hover:text-orange-500 transition"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms-and-conditions"
-                className="hover:text-orange-500 transition"
-              >
-                Terms & Conditions (T&C)
-              </Link>
-            </div>
-          </div>
+        <div className="container mx-auto px-4 py-4 text-center">
+          <p>
+            © {new Date().getFullYear()} Shoulder and Elbow Society of India.
+            All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
