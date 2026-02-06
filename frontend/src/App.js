@@ -26,6 +26,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import EventDetails from "./pages/EventDetails";
 import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 // Admin Pages
 import AdminLogin from "./admin/Login";
