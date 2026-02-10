@@ -12,6 +12,42 @@ const getImageUrl = (imageUrl) => {
   return `${BACKEND_URL}/api${imageUrl}`;
 };
 
+// Image component with fallback
+const MemberImage = ({ src, name, size = 'large' }) => {
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2);
+  const sizeClasses = size === 'large' 
+    ? 'w-28 h-28 text-4xl' 
+    : 'w-20 h-20 text-2xl';
+
+  if (!src || hasError) {
+    return (
+      <div className={`${sizeClasses} bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg`}>
+        <span className="text-white font-bold">{initials}</span>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {isLoading && (
+        <div className={`${sizeClasses} bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg animate-pulse`}>
+          <span className="text-white font-bold">{initials}</span>
+        </div>
+      )}
+      <img 
+        src={src} 
+        alt={name} 
+        className={`w-full h-full object-cover ${isLoading ? 'hidden' : ''}`}
+        onError={() => setHasError(true)}
+        onLoad={() => setIsLoading(false)}
+      />
+    </>
+  );
+};
+
 // Executive Committee List Page
 export const ExecutiveCommittee = () => {
   const [committee, setCommittee] = useState([]);
