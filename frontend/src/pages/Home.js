@@ -267,14 +267,12 @@ const Home = () => {
                     className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition group w-64 text-center border border-amber-200"
                     data-testid={`president-card`}
                   >
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-amber-600 to-red-700 flex items-center justify-center shadow-lg">
-                      {president.profile_image ? (
-                        <img src={getImageUrl(president.profile_image, BACKEND_URL)} alt={president.full_name} className="w-full h-full object-cover" />
-                      ) : (
-                        <span className="text-white text-4xl font-bold">
-                          {president.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
-                        </span>
-                      )}
+                    <div className="w-32 h-32 mx-auto mb-4">
+                      <MemberImageHome 
+                        src={getImageUrl(president.profile_image, BACKEND_URL)} 
+                        name={president.full_name}
+                        sizeClass="w-32 h-32"
+                      />
                     </div>
                     <h3 className="font-bold text-lg text-gray-900 group-hover:text-amber-700 transition">{president.full_name}</h3>
                     <p className="text-amber-700 font-semibold">{president.designation}</p>
@@ -292,14 +290,12 @@ const Home = () => {
                       className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition group w-48 text-center border border-gray-100"
                       data-testid={`office-bearer-${member.slug}`}
                     >
-                      <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-                        {member.profile_image ? (
-                          <img src={getImageUrl(member.profile_image, BACKEND_URL)} alt={member.full_name} className="w-full h-full object-cover" />
-                        ) : (
-                          <span className="text-white text-2xl font-bold">
-                            {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
-                          </span>
-                        )}
+                      <div className="w-20 h-20 mx-auto mb-3">
+                        <MemberImageHome 
+                          src={getImageUrl(member.profile_image, BACKEND_URL)} 
+                          name={member.full_name}
+                          sizeClass="w-20 h-20"
+                        />
                       </div>
                       <h3 className="font-semibold text-gray-900 group-hover:text-amber-700 transition text-sm">{member.full_name}</h3>
                       <p className="text-amber-600 text-xs font-medium">{member.designation}</p>
