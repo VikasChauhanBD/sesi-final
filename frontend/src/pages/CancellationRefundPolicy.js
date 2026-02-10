@@ -113,6 +113,29 @@ const CancellationRefundPolicy = () => {
               </li>
             </ul>
           </div>
+
+          {/* Important Note */}
+          <div className="bg-red-50 border border-red-200 rounded-2xl p-6 mt-8">
+            <h3 className="text-lg font-bold text-red-800 mb-4">Important Note</h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-red-500"></span>
+                Event registration cancellation requests must be made within the specified timeline mentioned in event details.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-red-500"></span>
+                Refunds, if applicable, will be processed after deduction of administrative charges.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-red-500"></span>
+                Membership fees are non-refundable.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-red-500"></span>
+                No refunds will be issued for no-shows or late cancellations.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

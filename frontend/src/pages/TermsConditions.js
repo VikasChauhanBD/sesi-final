@@ -60,6 +60,29 @@ const TermsConditions = () => {
               </li>
             </ul>
           </div>
+
+          {/* Important Note */}
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mt-8">
+            <h3 className="text-lg font-bold text-amber-800 mb-4">Important Note</h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-amber-500"></span>
+                All payments made on the SESI website are subject to confirmation.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-amber-500"></span>
+                Registration and membership are non-transferable.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-amber-500"></span>
+                SESI reserves the right to modify events, schedules, speakers, or fees if required.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-amber-500"></span>
+                By making a payment, the user agrees to abide by SESI rules and policies.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

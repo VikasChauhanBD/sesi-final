@@ -61,6 +61,25 @@ const PrivacyPolicy = () => {
               </li>
             </ul>
           </div>
+
+          {/* Important Note */}
+          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mt-8">
+            <h3 className="text-lg font-bold text-blue-800 mb-4">Important Note</h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-blue-500"></span>
+                SESI collects personal information solely for membership, event registration, and academic communication.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-blue-500"></span>
+                Data is not shared with third parties except as required for payment processing or legal compliance.
+              </li>
+              <li className="relative pl-7 text-base leading-relaxed">
+                <span className="absolute left-0 top-2 h-2 w-2 rounded-full bg-blue-500"></span>
+                Secure payment gateways are used to ensure data protection.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

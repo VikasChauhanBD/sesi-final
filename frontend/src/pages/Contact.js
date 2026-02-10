@@ -65,6 +65,27 @@ const Contact = () => {
               <h4 className="font-bold text-lg mb-4">Contact Us</h4>
 
               <ul className="space-y-3 text-gray-600 text-base">
+                {/* Registered Name */}
+                <li className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
+                  <span>
+                    <strong>Registered Name:</strong><br />
+                    Shoulder and Elbow Society of India (SESI)
+                  </span>
+                </li>
+
                 {/* Phone */}
                 <li className="flex items-start gap-3">
                   <svg
@@ -81,10 +102,10 @@ const Contact = () => {
                     />
                   </svg>
                   <a
-                    href="tel:+919003273451"
+                    href="tel:+917559024498"
                     className="hover:text-orange-500 transition"
                   >
-                    +91 90032 73451
+                    +91 7559024498
                   </a>
                 </li>
 
@@ -104,35 +125,10 @@ const Contact = () => {
                     />
                   </svg>
                   <a
-                    href="mailto:programmes@sesiindia.org"
+                    href="mailto:sesisecretary1@gmail.com"
                     className="hover:text-orange-500 transition"
                   >
-                    programmes@sesiindia.org
-                  </a>
-                </li>
-
-                {/* Website */}
-                <li className="flex items-start gap-3">
-                  <svg
-                    className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                    />
-                  </svg>
-                  <a
-                    href="https://www.sesionline.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-orange-500 transition"
-                  >
-                    www.sesionline.in
+                    sesisecretary1@gmail.com
                   </a>
                 </li>
 
@@ -158,9 +154,9 @@ const Contact = () => {
                     />
                   </svg>
                   <span>
-                    4th Floor, Madhapur,
-                    <br />
-                    Hyderabad, Telangana, India
+                    3A Anant income tax lane,<br />
+                    Prabhat road, Erandwane,<br />
+                    Off Karve road, Pune, 411004
                   </span>
                 </li>
               </ul>

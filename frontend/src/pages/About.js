@@ -11,11 +11,9 @@ const About = () => {
             About Us
           </h1>
           <p className="text-white/90">
-            The Shoulder and Elbow Society of India (SESI) is the premier
-            professional body in India dedicated to the advancement of medical
-            knowledge, research, and surgical expertise specifically for
-            shoulder and elbow disorders. It operates as the specialized
-            subspecialty section under the Indian Orthopaedic Association (IOA).
+            Shoulder and Elbow Society of India (SESI) is a professional academic body dedicated to education, research, and advancement in shoulder and elbow surgery.
+            SESI conducts conferences, workshops, training programs, and maintains academic registries for continuous professional development.
+            The society promotes ethical practice, scientific exchange, and collaboration among orthopaedic surgeons.
           </p>
         </div>
       </section>
