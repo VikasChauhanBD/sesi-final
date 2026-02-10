@@ -129,10 +129,10 @@ const Footer = () => {
                   />
                 </svg>
                 <a
-                  href="tel:+919003273451"
+                  href="tel:+917559024498"
                   className="hover:text-orange-500 transition"
                 >
-                  +91 90032 73451
+                  +91 7559024498
                 </a>
               </li>
 
@@ -152,10 +152,10 @@ const Footer = () => {
                   />
                 </svg>
                 <a
-                  href="mailto:programmes@sesiindia.org"
+                  href="mailto:sesisecretary1@gmail.com"
                   className="hover:text-orange-500 transition"
                 >
-                  programmes@sesiindia.org
+                  sesisecretary1@gmail.com
                 </a>
               </li>
 
@@ -206,9 +206,9 @@ const Footer = () => {
                   />
                 </svg>
                 <span>
-                  4th Floor, Madhapur,
-                  <br />
-                  Hyderabad, Telangana, India
+                  3A Anant income tax lane,<br />
+                  Prabhat road, Erandwane,<br />
+                  Off Karve road, Pune, 411004
                 </span>
               </li>
             </ul>
