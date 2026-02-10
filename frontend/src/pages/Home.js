@@ -323,14 +323,12 @@ const Home = () => {
                           className="bg-white rounded-xl p-5 hover:bg-amber-50 transition-all group w-48 text-center flex-shrink-0 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105"
                           data-testid={`ec-member-${member.slug}`}
                         >
-                          <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg">
-                            {member.profile_image ? (
-                              <img src={getImageUrl(member.profile_image, BACKEND_URL)} alt={member.full_name} className="w-full h-full object-cover" />
-                            ) : (
-                              <span className="text-white text-2xl font-bold">
-                                {member.full_name.split(' ').map(n => n[0]).join('').substring(0, 2)}
-                              </span>
-                            )}
+                          <div className="w-24 h-24 mx-auto mb-4">
+                            <MemberImageHome 
+                              src={getImageUrl(member.profile_image, BACKEND_URL)} 
+                              name={member.full_name}
+                              sizeClass="w-24 h-24"
+                            />
                           </div>
                           <h3 className="font-semibold text-gray-900 group-hover:text-amber-700 transition text-sm">{member.full_name}</h3>
                           <p className="text-xs text-amber-600 mt-1">EC Member</p>
