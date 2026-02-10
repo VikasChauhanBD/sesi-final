@@ -12,6 +12,39 @@ const getImageUrl = (imageUrl, backendUrl) => {
   return `${backendUrl}/api${imageUrl}`;
 };
 
+// Image component with fallback for Home page
+const MemberImageHome = ({ src, name, sizeClass = 'w-24 h-24' }) => {
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2);
+
+  if (!src || hasError) {
+    return (
+      <div className={`${sizeClass} rounded-full bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-lg`}>
+        <span className="text-white text-2xl font-bold">{initials}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${sizeClass} rounded-full overflow-hidden shadow-lg border-4 border-white`}>
+      {isLoading && (
+        <div className="w-full h-full bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center animate-pulse">
+          <span className="text-white text-2xl font-bold">{initials}</span>
+        </div>
+      )}
+      <img 
+        src={src} 
+        alt={name} 
+        className={`w-full h-full object-cover ${isLoading ? 'hidden' : ''}`}
+        onError={() => setHasError(true)}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
+  );
+};
+
 const Home = () => {
   const [committee, setCommittee] = useState([]);
   const [news, setNews] = useState([]);
