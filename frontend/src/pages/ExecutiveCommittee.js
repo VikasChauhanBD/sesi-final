@@ -54,7 +54,8 @@ export const ExecutiveCommittee = () => {
   const [loading, setLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState(2025);
 
-  const years = [2025, 2024, 2023, 2022, 2021];
+  // Year range from 2000-01 to 2030-31
+  const years = Array.from({ length: 31 }, (_, i) => 2030 - i);
 
   useEffect(() => {
     const fetchCommittee = async () => {
