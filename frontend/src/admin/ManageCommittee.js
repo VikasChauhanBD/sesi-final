@@ -30,7 +30,8 @@ const ManageCommittee = () => {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const designations = ['President', 'Vice President', 'Secretary', 'Finance Secretary', 'Immediate Past President', 'Joint Secretary', 'Treasurer', 'EC Member'];
-  const years = Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i);
+  // Year range from 2000-01 to 2030-31
+  const years = Array.from({ length: 31 }, (_, i) => 2030 - i);
 
   useEffect(() => {
     const token = localStorage.getItem('sesi_token');
