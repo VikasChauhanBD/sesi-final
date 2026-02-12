@@ -124,6 +124,11 @@ Build a modern, fast, and SEO-friendly website for the Shoulder & Elbow Society 
     - Created reusable `SEO` component using react-helmet-async
     - Added dynamic SEO to key pages: Home, Publications, Resources, Events, Membership, Contact, Executive Committee
     - Each page has unique title, description, keywords, and canonical URL
+16. ✅ **SESICON 2025 Report Page & News Update** (Jan 21, 2026):
+    - Created dedicated `/news/sesicon-2025-report` page with full conference report
+    - Added `link_url` field to News model for custom redirect URLs
+    - Updated database to link SESICON 2025 news item to the report page
+    - "Read More" button now correctly navigates to the full report
 
 ---
 
