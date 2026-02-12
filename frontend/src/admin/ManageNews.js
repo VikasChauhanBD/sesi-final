@@ -93,6 +93,7 @@ const ManageNews = () => {
       content: '',
       excerpt: '',
       category: '',
+      link_url: '',
       is_published: true
     });
   };
