@@ -260,7 +260,7 @@ const ManageCommittee = () => {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-bold text-gray-900">{member.full_name}</h3>
                       <p className="text-amber-600 font-medium text-sm">{member.designation}</p>
-                      <p className="text-gray-500 text-xs mt-1">{member.year}-{member.year + 1}</p>
+                      <p className="text-gray-500 text-xs mt-1">{member.year}-{member.year + 2}</p>
                       {member.qualifications && (
                         <p className="text-gray-500 text-xs mt-1">{member.qualifications}</p>
                       )}
