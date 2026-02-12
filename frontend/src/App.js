@@ -91,6 +91,7 @@ function App() {
                 
                 {/* News & Events */}
                 <Route path="/news" element={<NewsHighlights />} />
+                <Route path="/news/sesicon-2025-report" element={<SESICON2025Report />} />
                 <Route path="/news/:id" element={<NewsHighlights />} />
                 <Route path="/events" element={<EventsPage />} />
                 <Route path="/event-details" element={<EventDetails />} />
