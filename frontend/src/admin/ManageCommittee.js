@@ -30,8 +30,17 @@ const ManageCommittee = () => {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const designations = ['President', 'Vice President', 'Secretary', 'Finance Secretary', 'Immediate Past President', 'Joint Secretary', 'Treasurer', 'EC Member'];
-  // Year range from 2000-01 to 2030-31
-  const years = Array.from({ length: 31 }, (_, i) => 2030 - i);
+  // Two-year spans from 2011-2013 to 2025-2027
+  const yearSpans = [
+    { start: 2025, end: 2027, label: '2025-2027' },
+    { start: 2023, end: 2025, label: '2023-2025' },
+    { start: 2021, end: 2023, label: '2021-2023' },
+    { start: 2019, end: 2021, label: '2019-2021' },
+    { start: 2017, end: 2019, label: '2017-2019' },
+    { start: 2015, end: 2017, label: '2015-2017' },
+    { start: 2013, end: 2015, label: '2013-2015' },
+    { start: 2011, end: 2013, label: '2011-2013' },
+  ];
 
   useEffect(() => {
     const token = localStorage.getItem('sesi_token');
