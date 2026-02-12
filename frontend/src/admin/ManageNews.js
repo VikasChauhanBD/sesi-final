@@ -262,6 +262,18 @@ const ManageNews = () => {
                   />
                 </div>
                 <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Custom Link URL (Optional)</label>
+                  <input
+                    type="text"
+                    value={formData.link_url}
+                    onChange={(e) => setFormData({ ...formData, link_url: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
+                    placeholder="e.g., /news/sesicon-2025-report (leave empty for default)"
+                    data-testid="news-link-url-input"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">If set, "Read More" will link to this URL instead of the default news detail page</p>
+                </div>
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Content *</label>
                   <textarea
                     value={formData.content}
