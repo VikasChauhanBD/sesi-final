@@ -139,6 +139,7 @@ class News(BaseModel):
     seo_title: Optional[str] = None
     seo_description: Optional[str] = None
     seo_keywords: Optional[str] = None
+    link_url: Optional[str] = None
 
 class NewsCreate(BaseModel):
     title: str
