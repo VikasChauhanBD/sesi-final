@@ -146,6 +146,7 @@ class NewsCreate(BaseModel):
     content: str
     excerpt: Optional[str] = None
     category: Optional[str] = None
+    link_url: Optional[str] = None
     is_published: bool = True
 
 # Gallery Models
