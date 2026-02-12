@@ -54,8 +54,17 @@ export const ExecutiveCommittee = () => {
   const [loading, setLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState(2025);
 
-  // Year range from 2000-01 to 2030-31
-  const years = Array.from({ length: 31 }, (_, i) => 2030 - i);
+  // Two-year spans from 2011-2013 to 2025-2027
+  const yearSpans = [
+    { start: 2025, end: 2027 },
+    { start: 2023, end: 2025 },
+    { start: 2021, end: 2023 },
+    { start: 2019, end: 2021 },
+    { start: 2017, end: 2019 },
+    { start: 2015, end: 2017 },
+    { start: 2013, end: 2015 },
+    { start: 2011, end: 2013 },
+  ];
 
   useEffect(() => {
     const fetchCommittee = async () => {
@@ -98,18 +107,18 @@ export const ExecutiveCommittee = () => {
       <section className="bg-white shadow-md sticky top-16 z-40">
         <div className="container mx-auto px-4">
           <div className="flex gap-2 py-4 overflow-x-auto">
-            {years.map(year => (
+            {yearSpans.map(span => (
               <button
-                key={year}
-                onClick={() => setSelectedYear(year)}
+                key={span.start}
+                onClick={() => setSelectedYear(span.start)}
                 className={`px-6 py-2 rounded-full font-medium transition whitespace-nowrap ${
-                  selectedYear === year
+                  selectedYear === span.start
                     ? 'bg-amber-700 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
-                data-testid={`year-filter-${year}`}
+                data-testid={`year-filter-${span.start}`}
               >
-                {year}-{(year + 1).toString().slice(-2)}
+                {span.start}-{span.end}
               </button>
             ))}
           </div>
