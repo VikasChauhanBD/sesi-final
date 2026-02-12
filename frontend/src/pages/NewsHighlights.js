@@ -101,10 +101,10 @@ const NewsHighlights = () => {
                     {item.title}
                   </h2>
                   <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                    {item.excerpt || item.content.substring(0, 150)}...
+                    {item.summary || item.content?.substring(0, 150)}...
                   </p>
                   <Link
-                    to={`/news/${item.id}`}
+                    to={item.link_url || `/news/${item.id}`}
                     className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 font-medium text-sm"
                   >
                     Read More
