@@ -420,8 +420,8 @@ const ManageCommittee = () => {
                       required
                       data-testid="committee-year-select"
                     >
-                      {years.map(year => (
-                        <option key={year} value={year}>{year}-{(year + 1).toString().slice(-2)}</option>
+                      {yearSpans.map(span => (
+                        <option key={span.start} value={span.start}>{span.label}</option>
                       ))}
                     </select>
                   </div>
