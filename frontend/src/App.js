@@ -28,6 +28,7 @@ import EventDetails from "./pages/EventDetails";
 import CancellationRefundPolicy from "./pages/CancellationRefundPolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import SESICON2025Report from "./pages/SESICON2025Report";
 
 // Admin Pages
 import AdminLogin from "./admin/Login";
