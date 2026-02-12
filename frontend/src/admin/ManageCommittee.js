@@ -225,8 +225,8 @@ const ManageCommittee = () => {
               data-testid="year-filter"
             >
               <option value="all">All Years</option>
-              {years.map(year => (
-                <option key={year} value={year}>{year}-{(year + 1).toString().slice(-2)}</option>
+              {yearSpans.map(span => (
+                <option key={span.start} value={span.start}>{span.label}</option>
               ))}
             </select>
             <span className="text-gray-500 ml-auto">{filteredCommittee.length} members</span>
