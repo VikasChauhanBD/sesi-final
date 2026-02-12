@@ -69,6 +69,7 @@ const ManageNews = () => {
       content: item.content,
       excerpt: item.excerpt || '',
       category: item.category || '',
+      link_url: item.link_url || '',
       is_published: item.is_published
     });
     setShowForm(true);
