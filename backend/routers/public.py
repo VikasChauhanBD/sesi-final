@@ -16,11 +16,16 @@ db = client[os.environ.get('DB_NAME', 'sesi_database')]
 
 # Committee Members
 @router.get("/committee", response_model=List[CommitteeMember])
-async def get_committee_members(year: Optional[int] = None, is_current: bool = True):
+async def get_committee_members(year: Optional[int] = None, is_current: Optional[bool] = None):
     """Get committee members"""
-    query = {"is_current": is_current}
+    query = {}
     if year:
         query["year"] = year
+    elif is_current is not None:
+        query["is_current"] = is_current
+    else:
+        # Default: show current members if no filter specified
+        query["is_current"] = True
     
     members = await db.committee_members.find(query, {"_id": 0}).sort("display_order", 1).to_list(100)
     return members
