@@ -247,7 +247,10 @@ const Home = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Executive Committee</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Executive Committee</h2>
+            <span className="inline-block bg-amber-100 text-amber-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">
+              2025 - 2027
+            </span>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Meet the dedicated leaders guiding SESI's mission to advance shoulder and elbow surgery in India.
             </p>
