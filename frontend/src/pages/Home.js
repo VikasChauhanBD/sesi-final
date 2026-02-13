@@ -59,7 +59,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [committeeRes, newsRes, eventsRes, albumsRes] = await Promise.all([
-          publicAPI.getCommittee({ is_current: true }),
+          publicAPI.getCommittee({ year: 2025 }),
           publicAPI.getNews({ limit: 4 }),
           publicAPI.getEvents({ status: 'upcoming', limit: 6 }),
           publicAPI.getAlbums(),
