@@ -46,6 +46,14 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://sesi.co.in/admin"
+                  className="text-gray-400 hover:text-orange-500 transition text-sm"
+                >
+                  Administrative
+                </a>
+              </li>
             </ul>
           </div>
 
