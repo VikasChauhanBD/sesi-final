@@ -5,14 +5,13 @@ from fastapi import UploadFile, HTTPException
 from typing import List
 
 ALLOWED_EXTENSIONS = {'.pdf', '.jpg', '.jpeg', '.png', '.doc', '.docx'}
-MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
+MAX_FILE_SIZE = 5 * 1024 * 1024
 
-UPLOAD_DIR = Path("/app/backend/uploads")
-UPLOAD_DIR.mkdir(exist_ok=True)
+BASE_DIR = Path(__file__).resolve().parent.parent
+UPLOAD_DIR = BASE_DIR / "uploads"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 def validate_file(file: UploadFile) -> bool:
-    """Validate file type and size"""
-    # Check file extension
     file_ext = Path(file.filename).suffix.lower()
     if file_ext not in ALLOWED_EXTENSIONS:
         raise HTTPException(
@@ -22,22 +21,17 @@ def validate_file(file: UploadFile) -> bool:
     return True
 
 async def save_upload_file(file: UploadFile, subfolder: str = "general") -> str:
-    """Save uploaded file and return the file path"""
     validate_file(file)
     
-    # Create subfolder if it doesn't exist
     folder_path = UPLOAD_DIR / subfolder
-    folder_path.mkdir(exist_ok=True, parents=True)
+    folder_path.mkdir(parents=True, exist_ok=True)
     
-    # Generate unique filename
     file_ext = Path(file.filename).suffix.lower()
     unique_filename = f"{uuid.uuid4()}{file_ext}"
     file_path = folder_path / unique_filename
     
-    # Save file
     contents = await file.read()
     
-    # Check file size
     if len(contents) > MAX_FILE_SIZE:
         raise HTTPException(
             status_code=400,
@@ -47,25 +41,22 @@ async def save_upload_file(file: UploadFile, subfolder: str = "general") -> str:
     with open(file_path, "wb") as f:
         f.write(contents)
     
-    # Return relative path
     return f"/uploads/{subfolder}/{unique_filename}"
 
 async def save_multiple_files(
     files: List[UploadFile],
     subfolder: str = "general"
 ) -> List[str]:
-    """Save multiple files and return list of file paths"""
     file_paths = []
     for file in files:
-        if file.filename:  # Skip if no file selected
+        if file.filename:
             file_path = await save_upload_file(file, subfolder)
             file_paths.append(file_path)
     return file_paths
 
 def delete_file(file_path: str) -> bool:
-    """Delete a file from the server"""
     try:
-        full_path = Path("/app/backend") / file_path.lstrip("/")
+        full_path = BASE_DIR / file_path.lstrip("/")
         if full_path.exists():
             full_path.unlink()
             return True
