@@ -13,7 +13,9 @@ import io
 import os
 
 # Get app URL from environment variable with fallback
-APP_URL = os.environ.get('APP_URL', 'https://sesi.co.in').replace('https://', '').replace('http://', '')
+# APP_URL = os.environ.get('APP_URL', 'https://sesi.co.in').replace('https://', '').replace('http://', '')
+
+APP_URL = os.environ.get('APP_URL', 'http://localhost:3000/').replace('https://', '').replace('http://', '')
 
 def generate_membership_certificate(member_data):
     """
@@ -167,9 +169,8 @@ async def get_next_membership_number():
     from motor.motor_asyncio import AsyncIOMotorClient
     import os
     
-    mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-    client = AsyncIOMotorClient(mongo_url)
-    db = client[os.environ.get('DB_NAME', 'sesi_database')]
+    from database import db
+
     
     current_year = datetime.now().year
     

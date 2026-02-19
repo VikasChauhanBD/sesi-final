@@ -4,7 +4,7 @@ import os
 logger = logging.getLogger(__name__)
 
 # Get app URL from environment variable with fallback
-APP_URL = os.environ.get('APP_URL', 'https://sesi.co.in')
+APP_URL = os.environ.get('APP_URL', 'http://localhost:3000/').replace('https://', '').replace('http://', '')
 
 def send_email(to_email: str, subject: str, body: str, attachment=None, attachment_name=None):
     """

@@ -48,7 +48,7 @@ const Footer = () => {
               ))}
               <li>
                 <a
-                  href="https://sesi.co.in/admin"
+                  href="/admin"
                   className="text-gray-400 hover:text-orange-500 transition text-sm"
                 >
                   Administrative

@@ -11,9 +11,8 @@ import uuid
 router = APIRouter(prefix="/membership", tags=["Membership"])
 
 # Database connection
-mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ.get('DB_NAME', 'sesi_database')]
+from database import db
+
 
 @router.post("/apply")
 async def submit_membership_application(
